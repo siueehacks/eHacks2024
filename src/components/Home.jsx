@@ -16,7 +16,7 @@ const Home = () => {
     >
       <Box display="flex" flexDirection="column" alignItems="center">
         <Text fontSize="6xl" fontFamily="monospace">
-          eHacks
+          {"{"}eHacks{"}"}
         </Text>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
           March 3-5, 2023
@@ -33,6 +33,12 @@ const Home = () => {
           Apply to Participate
         </Button>
       </a>
+      <Box>
+        <Text mt="10px" mb="3vh" fontSize="xl" fontFamily="monospace">
+        Priority Application Deadline: February 15, 2023<br/>
+        Final Application Deadline: February 22, 2023
+        </Text>
+      </Box>
       <SocialLinks />
     </Box>
   );

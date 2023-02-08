@@ -79,16 +79,14 @@ const Faq = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left" fontSize="xl">
-                  When is the deadline to apply?
+                  What is does priority application mean?
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4} fontSize="lg">
-              The priority application deadline is February 15th, 2023. The
-              final application deadline is February 22th, 2023. Priority
-              registration means you will be eligible for a free t-shirt and
-              other swag if you are accepted.
+              Priority application means you will be guaranteed for a free
+              t-shirt and potentially other goodies if you are accepted.
             </AccordionPanel>
           </AccordionItem>
 
