@@ -1,4 +1,11 @@
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Image, Flex } from "@chakra-ui/react";
+import Nineteen04Labs from "../assets/sponsorLogos/1904labs.webp";
+import ArchitectNow from "../assets/sponsorLogos/ArchitectNow.webp";
+import NISC from "../assets/sponsorLogos/NISC.webp";
+import ObjectComputing from "../assets/sponsorLogos/ObjectComputing.webp";
+import SIUEGraduateSchool from "../assets/sponsorLogos/SIUEGraduateSchool.webp";
+import Starburst from "../assets/sponsorLogos/Starburst.webp";
+import T_Rex from "../assets/sponsorLogos/T-Rex.webp";
 
 const Sponsors = () => {
   return (
@@ -13,28 +20,83 @@ const Sponsors = () => {
         <Text fontSize="6xl" fontFamily="monospace">
           Sponsors
         </Text>
-        <Text
-          mt="-5px"
-          mb="3vh"
-          ml="5vmin"
-          mr="5vmin"
-          fontSize="xl"
-          fontFamily="monospace"
+        <Flex
+          w="80%"
+          gap="10vmin"
+          justify="center"
+          align="center"
+          bg="white"
+          p="10vmin"
+          rounded="10vmin"
+          opacity="90%"
+          direction="column"
         >
-          Object Computing
-          <br />
-          T-Rex
-          <br />
-          NISC
-          <br />
-          Starburst
-          <br />
-          ArchitectNow
-          <br />
-          1904 Labs
-          <br />
-          SIUE Graduate School
-        </Text>
+          <a href="https://www.objectcomputing.com/" rel="external">
+            <Image
+              objectFit="scale-down"
+              maxW="28vmax"
+              maxH="40vmax"
+              src={ObjectComputing}
+              alt="Object Computing"
+            />
+          </a>
+          <Flex gap="10vmin" wrap="wrap" justify="center" align="center">
+            <a href="https://downtowntrex.org/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={T_Rex}
+                alt="T-Rex"
+              />
+            </a>
+            <a href="https://www.nisc.coop/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={NISC}
+                alt="NISC"
+              />
+            </a>
+            <a href="https://www.starburst.io/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={Starburst}
+                alt="Starburst"
+              />
+            </a>
+            <a href="https://www.architectnow.net/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={ArchitectNow}
+                alt="ArchitectNow"
+              />
+            </a>
+            <a href="https://1904labs.com/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={Nineteen04Labs}
+                alt="1904 Labs"
+              />
+            </a>
+            <a href="https://www.siue.edu/graduate/" rel="external">
+              <Image
+                objectFit="scale-down"
+                maxW="20vmax"
+                maxH="15vmax"
+                src={SIUEGraduateSchool}
+                alt="SIUE Graduate School"
+              />
+            </a>
+          </Flex>
+        </Flex>
       </Box>
     </Box>
   );
