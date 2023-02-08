@@ -25,10 +25,9 @@ const Sponsors = () => {
           gap="10vmin"
           justify="center"
           align="center"
-          bg="white"
+          bg="rgba(255, 255, 255, 0.9)"
           p="10vmin"
           rounded="10vmin"
-          opacity="90%"
           direction="column"
         >
           <a href="https://www.objectcomputing.com/" rel="external">
