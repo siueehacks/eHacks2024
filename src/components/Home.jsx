@@ -30,7 +30,7 @@ const Home = () => {
 
       <a href="https://formfacade.com/public/110443485080613872121/all/form/1FAIpQLSdJ9sqC-8eBCka37qTaIphhABF4cL9wvk7mzyDcXS0coLOpkQ">
         <Button colorScheme="Black" variant="outline" onClick={handleRegister}>
-          Register
+          Apply to Participate
         </Button>
       </a>
       <SocialLinks />

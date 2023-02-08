@@ -12,7 +12,7 @@ const SocialLinks = () => {
       >
         <FontAwesomeIcon icon={faInstagram} size="2x" />
       </a>
-      <a href="https://github.com/siue-ehacks">
+      <a href="https://github.com/siueehacks">
         <FontAwesomeIcon icon={faGithub} size="2x" />
       </a>
     </div>
