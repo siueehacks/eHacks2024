@@ -36,7 +36,7 @@ const Home = () => {
       <Box>
         <Text mt="10px" mb="3vh" maxW="70vw" fontSize="xl"fontFamily="monospace">
         Priority Application Deadline: 2/15/2023<br/>
-        Final Application Deadline: 2/22/2023
+        Final Application Deadline: 2/24/2023
         </Text>
       </Box>
       <SocialLinks />
