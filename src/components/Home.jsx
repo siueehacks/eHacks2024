@@ -1,5 +1,6 @@
-import { Text, Button, Box } from "@chakra-ui/react";
+import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 import SocialLinks from "./SocialLinks";
+import ObjectComputingPresents from "../assets/sponsorLogos/ObjectComputingLight.webp";
 
 const Home = () => {
   const handleRegister = () => {
@@ -15,7 +16,19 @@ const Home = () => {
       alignItems="center"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Text fontSize="6xl" fontFamily="monospace">
+        <a href="https://www.objectcomputing.com/" rel="external">
+        <Image
+          src={ObjectComputingPresents}
+          alt="Object Computing"
+          maxW="20vmax"
+          maxH="13vh"
+          mt="8vh"
+        />
+        </a>
+        <Text fontSize="xl" fontFamily="monospace" ml="2vw">
+          Presents
+        </Text>
+        <Text fontSize="7xl" fontFamily="monospace">
           {"{"}eHacks{"}"}
         </Text>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
@@ -34,9 +47,16 @@ const Home = () => {
         </Button>
       </a>
       <Box>
-        <Text mt="10px" mb="3vh" maxW="70vw" fontSize="xl"fontFamily="monospace">
-        Priority Application Deadline: 2/15/2023<br/>
-        Final Application Deadline: 2/24/2023
+        <Text
+          mt="10px"
+          mb="3vh"
+          maxW="70vw"
+          fontSize="xl"
+          fontFamily="monospace"
+        >
+          Priority Application Deadline: 2/15/2023
+          <br />
+          Final Application Deadline: 2/24/2023
         </Text>
       </Box>
       <SocialLinks />
