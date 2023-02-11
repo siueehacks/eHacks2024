@@ -22,7 +22,7 @@ const Home = () => {
           alt="Object Computing"
           maxW="20vmax"
           maxH="13vh"
-          mt="8vh"
+          mt="8vmin"
         />
         </a>
         <Text fontSize="xl" fontFamily="monospace" ml="2vw">
