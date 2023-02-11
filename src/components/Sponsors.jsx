@@ -59,7 +59,7 @@ const Sponsors = () => {
           <Text fontSize="4xl" fontFamily="monospace" color="black">
             Silver Sponsors
           </Text>
-          <Flex gap="10vmin" wrap="wrap" justify="space-around" align="center">
+          <Flex wrap="wrap" justify="space-around" align="center">
             <a href="https://www.nisc.coop/" rel="external">
               <Image
                 objectFit="contain"
