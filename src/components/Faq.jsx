@@ -85,7 +85,7 @@ const Faq = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4} fontSize="lg">
-              Priority application means you will be guaranteed for a free
+              Priority application means you will be guaranteed a free
               t-shirt and potentially other goodies if you are accepted.
             </AccordionPanel>
           </AccordionItem>
