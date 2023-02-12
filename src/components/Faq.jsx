@@ -79,7 +79,7 @@ const Faq = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left" fontSize="xl">
-                  What is does priority application mean?
+                  What does priority application mean?
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
