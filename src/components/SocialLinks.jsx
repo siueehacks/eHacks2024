@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
-
+import devpostIcon from "../assets/devpostIcon.webp";
+import { Image } from "@chakra-ui/react";
 import "./SocialLinks.css";
+
 
 const SocialLinks = () => {
   return (
@@ -14,6 +16,9 @@ const SocialLinks = () => {
       </a>
       <a href="https://github.com/siueehacks">
         <FontAwesomeIcon icon={faGithub} size="2x" />
+      </a>
+      <a href="https://ehacks-2023.devpost.com/">
+        <Image src={devpostIcon} alt="Devpost Icon" h="2em" w="2em"/>
       </a>
     </div>
   );

@@ -30,15 +30,21 @@ const Sponsors = () => {
           rounded="10vmin"
           direction="column"
         >
+          <Text fontSize="4xl" fontFamily="monospace" color="black">
+            Platinum Sponsors
+          </Text>
           <a href="https://www.objectcomputing.com/" rel="external">
             <Image
               objectFit="scale-down"
-              maxW="28vmax"
+              maxW="25vmax"
               maxH="40vmax"
               src={ObjectComputing}
               alt="Object Computing"
             />
           </a>
+          <Text fontSize="4xl" fontFamily="monospace" color="black">
+            Gold Sponsors
+          </Text>
           <Flex gap="10vmin" wrap="wrap" justify="center" align="center">
             <a href="https://downtowntrex.org/" rel="external">
               <Image
@@ -49,53 +55,59 @@ const Sponsors = () => {
                 alt="T-Rex"
               />
             </a>
+          </Flex>
+          <Text fontSize="4xl" fontFamily="monospace" color="black">
+            Silver Sponsors
+          </Text>
+          <Flex wrap="wrap" justify="space-around" align="center">
             <a href="https://www.nisc.coop/" rel="external">
               <Image
-                objectFit="scale-down"
-                maxW="20vmax"
-                maxH="15vmax"
+                objectFit="contain"
+                w="20vmax"
+                h="15vmax"
                 src={NISC}
                 alt="NISC"
               />
             </a>
             <a href="https://www.starburst.io/" rel="external">
               <Image
-                objectFit="scale-down"
-                maxW="20vmax"
-                maxH="15vmax"
+                objectFit="contain"
+                w="20vmax"
+                h="15vmax"
                 src={Starburst}
                 alt="Starburst"
               />
             </a>
             <a href="https://www.architectnow.net/" rel="external">
               <Image
-                objectFit="scale-down"
-                maxW="20vmax"
-                maxH="15vmax"
+                objectFit="contain"
+                w="20vmax"
+                h="15vmax"
                 src={ArchitectNow}
                 alt="ArchitectNow"
               />
             </a>
             <a href="https://1904labs.com/" rel="external">
               <Image
-                objectFit="scale-down"
-                maxW="20vmax"
-                maxH="15vmax"
+                objectFit="contain"
+                w="20vmax"
+                h="15vmax"
                 src={Nineteen04Labs}
                 alt="1904 Labs"
               />
             </a>
             <a href="https://www.siue.edu/graduate/" rel="external">
               <Image
-                objectFit="scale-down"
-                maxW="20vmax"
-                maxH="15vmax"
+                objectFit="contain"
+                w="20vmax"
+                h="15vmax"
                 src={SIUEGraduateSchool}
                 alt="SIUE Graduate School"
               />
             </a>
           </Flex>
         </Flex>
+        <Text fontSize="xl" fontFamily="monospace">Net event proceeds will go to benefit the SIUE Computer Science Development Fund</Text>
       </Box>
     </Box>
   );
