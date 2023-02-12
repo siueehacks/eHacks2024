@@ -39,7 +39,7 @@ const Faq = () => {
             <AccordionPanel pb={4} fontSize="lg">
               A hackathon is an event where people come together to create
               something new. It is a place where you can meet new people and
-              learn new skills,
+              learn new skills!
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
