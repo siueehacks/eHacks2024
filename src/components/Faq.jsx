@@ -39,7 +39,7 @@ const Faq = () => {
             <AccordionPanel pb={4} fontSize="lg">
               A hackathon is an event where people come together to create
               something new. It is a place where you can meet new people and
-              learn new skills,
+              learn new skills!
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
@@ -79,13 +79,13 @@ const Faq = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left" fontSize="xl">
-                  What is does priority application mean?
+                  What does priority application mean?
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4} fontSize="lg">
-              Priority application means you will be guaranteed for a free
+              Priority application means you will be guaranteed a free
               t-shirt and potentially other goodies if you are accepted.
             </AccordionPanel>
           </AccordionItem>
