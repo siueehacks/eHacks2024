@@ -3,6 +3,7 @@ import SocialLinks from "./SocialLinks";
 import ObjectComputingPresents from "../assets/sponsorLogos/ObjectComputingLight.webp";
 
 const Home = () => {
+  const deadline = new Date("February 23, 2023 12:00:00");
   const handleRegister = () => {
     console.log("Register Button clicked");
   };
@@ -17,13 +18,13 @@ const Home = () => {
     >
       <Box display="flex" flexDirection="column" alignItems="center">
         <a href="https://www.objectcomputing.com/" rel="external">
-        <Image
-          src={ObjectComputingPresents}
-          alt="Object Computing"
-          maxW="20vmax"
-          maxH="13vh"
-          mt="8vmin"
-        />
+          <Image
+            src={ObjectComputingPresents}
+            alt="Object Computing"
+            maxW="20vmax"
+            maxH="13vh"
+            mt="8vmin"
+          />
         </a>
         <Text fontSize="xl" fontFamily="monospace" ml="2vw">
           Presents
@@ -42,9 +43,19 @@ const Home = () => {
       </Box>
 
       <a href="https://formfacade.com/public/110443485080613872121/all/form/1FAIpQLSdJ9sqC-8eBCka37qTaIphhABF4cL9wvk7mzyDcXS0coLOpkQ">
-        <Button colorScheme="Black" variant="outline" onClick={handleRegister}>
-          Apply to Participate
-        </Button>
+        {deadline > new Date() ? (
+          <Button
+            colorScheme="Black"
+            variant="outline"
+            onClick={handleRegister}
+          >
+            Apply to Participate
+          </Button>
+        ) : (
+          <Button colorScheme="Black" variant="outline">
+            Deadline Passed
+          </Button>
+        )}
       </a>
       <Box>
         <Text
@@ -54,9 +65,13 @@ const Home = () => {
           fontSize="xl"
           fontFamily="monospace"
         >
-          Priority Application Deadline: 2/15/2023
+          <Text as="s">Priority Application Deadline: 2/15/2023</Text>
           <br />
-          Final Application Deadline: 2/24/2023
+          {deadline > new Date() ? (
+            <Text>Final Application Deadline: 2/24/2023</Text>
+          ) : (
+            <Text as="s">Final Application Deadline: 2/23/2023</Text>
+          )}
         </Text>
       </Box>
       <SocialLinks />
