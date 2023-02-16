@@ -3,7 +3,7 @@ import SocialLinks from "./SocialLinks";
 import ObjectComputingPresents from "../assets/sponsorLogos/ObjectComputingLight.webp";
 
 const Home = () => {
-  const deadline = new Date("February 23, 2023 12:00:00");
+  const deadline = new Date("February 25, 2023 12:00:00");
   const handleRegister = () => {
     console.log("Register Button clicked");
   };
