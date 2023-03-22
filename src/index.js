@@ -19,6 +19,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
+          <Route path="/register" element={<HomePage/>} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

@@ -1,3 +1,3 @@
-# eHacks 2023
+# SheCode 2023
 
-Website for eHacks 2023
+Website for SheCode 2023

@@ -1,12 +1,10 @@
 import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 import SocialLinks from "./SocialLinks";
-import ObjectComputingPresents from "../assets/sponsorLogos/ObjectComputingLight.webp";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const deadline = new Date("February 21, 2023 12:00:00");
-  const handleRegister = () => {
-    console.log("Register Button clicked");
-  };
+  const earlyDeadline = new Date("April 8, 2023 12:00:00");
+  const deadline = new Date("April 15, 2023 12:00:00");
 
   return (
     <Box
@@ -17,28 +15,16 @@ const Home = () => {
       alignItems="center"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <a href="https://www.objectcomputing.com/" rel="external">
-          <Image
-            src={ObjectComputingPresents}
-            alt="Object Computing"
-            maxW="20vmax"
-            maxH="13vh"
-            mt="8vmin"
-          />
-        </a>
-        <Text fontSize="xl" fontFamily="monospace" ml="2vw">
-          Presents
-        </Text>
         <Text fontSize="7xl" fontFamily="monospace">
-          {"{"}eHacks{"}"}
+          {"{"}SheCode{"}"}
         </Text>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          March 3-5, 2023
+          April 22, 2023
         </Text>
         <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          T-Rex Innovation Center
+          SIUE
           <br />
-          St. Louis, MO
+          Edwardsville, IL
         </Text>
       </Box>
       {/*}
@@ -58,9 +44,11 @@ const Home = () => {
         )}
       </a>
       */}
-      <Button colorScheme="Black" variant="outline">
-        Event At Full Capacity
-      </Button>
+      <Link to="/register">
+        <Button colorScheme="Black" variant="outline">
+          Registration Coming Soon
+        </Button>
+      </Link>
       <Box>
         <Text
           mt="10px"
@@ -69,17 +57,10 @@ const Home = () => {
           fontSize="xl"
           fontFamily="monospace"
         >
-          <Text as="s">Priority Application Deadline: 2/15/2023</Text>
-          <br />
-          {deadline > new Date() ? (
-            <Text>Final Application Deadline: 2/24/2023</Text>
-          ) : (
-            <Text as="s">Final Application Deadline: 2/24/2023</Text>
-          )}
-          <Text>Event Has Met Full Capacity</Text>
+          <Text as={earlyDeadline > new Date() ? "" : "s"}>Priority Application Deadline: TBA</Text>
+          <Text as={deadline > new Date() ? "" : "s"}>Final Application Deadline: TBA</Text>
         </Text>
       </Box>
-      <SocialLinks />
     </Box>
   );
 };
