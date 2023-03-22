@@ -1,0 +1,7 @@
+/* You can import any open source fonts you need here */
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overscroll-behavior: none;
+}
