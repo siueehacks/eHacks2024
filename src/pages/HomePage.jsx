@@ -2,6 +2,7 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import Faq from "../components/Faq";
+import History from "../components/History";
 import Schedule from "../components/Schedule";
 import Navbar from "../components/Navbar";
 import "./Home.css";
@@ -18,6 +19,9 @@ const HomePage = () => {
         </section>
         <section className="Anchor" id="about">
           <About />
+        </section>
+        <section className="Anchor" id="history">
+          <History/>
         </section>
         <section className="Anchor" id="schedule">
           <Schedule />

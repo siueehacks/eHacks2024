@@ -1,6 +1,7 @@
 import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 import SocialLinks from "./SocialLinks";
 import { Link } from "react-router-dom";
+import logo from "../assets/shecodeWhite.png";
 
 const Home = () => {
   const earlyDeadline = new Date("April 8, 2023 12:00:00");
@@ -15,20 +16,18 @@ const Home = () => {
       alignItems="center"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Text fontSize="7xl" fontFamily="monospace">
-          {"{"}SheCode{"}"}
-        </Text>
+        <Image src={logo} alt="SheCode Logo" maxW="80%"/>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
           April 22, 2023
         </Text>
         <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          SIUE
+          Southern Illinois University Edwardsville
           <br />
           Edwardsville, IL
         </Text>
       </Box>
       {/*}
-      <a href="https://formfacade.com/public/110443485080613872121/all/form/1FAIpQLSdJ9sqC-8eBCka37qTaIphhABF4cL9wvk7mzyDcXS0coLOpkQ">
+      <Link to="/register">
         {deadline > new Date() ? (
           <Button
             colorScheme="Black"
@@ -42,7 +41,7 @@ const Home = () => {
             Deadline Passed
           </Button>
         )}
-      </a>
+      </Link>
       */}
       <Link to="/register">
         <Button colorScheme="Black" variant="outline">

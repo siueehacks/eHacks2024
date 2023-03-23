@@ -31,7 +31,7 @@ const Faq = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left" fontSize="xl">
-                  What is a SheCode?
+                  What is SheCode?
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
