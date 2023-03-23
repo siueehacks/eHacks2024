@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import { ChakraProvider } from '@chakra-ui/react';
 import { 
-  BrowserRouter, 
+  HashRouter, 
   Routes, 
   Route 
 } from "react-router-dom";
@@ -17,12 +17,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/register" element={<Register/>} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ChakraProvider>
   </React.StrictMode>
 );
