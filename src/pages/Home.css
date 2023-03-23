@@ -37,3 +37,9 @@
   padding-top: 20vh;
   margin-top: -20vh;
 }
+
+.TextField {
+  color: black;
+  margin-left: auto;
+  align-self: right;
+}
