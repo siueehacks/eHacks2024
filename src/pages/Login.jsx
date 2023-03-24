@@ -2,7 +2,14 @@ import "./Home.css";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig.js";
-import { Flex, Center, Button, Text, Input } from "@chakra-ui/react";
+import {
+  Flex,
+  Center,
+  Button,
+  Input,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -16,7 +23,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/dashboard");
     } catch (e) {
-      setError(e.message);
+      setError("Bad Credentials");
     }
   }
 
@@ -27,14 +34,14 @@ const Login = () => {
           <Flex
             direction="column"
             align="left"
-            h="50vh"
+            h="80vh"
             padding="2vmax"
             gap="2vmax"
             w="60%"
             maxW="50vmin"
           >
             <Flex gap="2vw" direction="column" justify="center" h="100%">
-              <Flex align="left">
+              <Flex align="center">
                 <label htmlFor="email">Email: </label>
                 <Input
                   type="email"
@@ -45,7 +52,7 @@ const Login = () => {
                   required
                 />
               </Flex>
-              <Flex align="left">
+              <Flex align="center">
                 <label htmlFor="password">Password: </label>
                 <Input
                   type="password"
@@ -56,16 +63,19 @@ const Login = () => {
                   required
                 />
               </Flex>
+              <Button
+                variant="outline"
+                onClick={handleLogin}
+                className="Button"
+                type="submit"
+              >
+                Login
+              </Button>
+              <Alert status="error" variant="solid" opacity={error ? "100%" : "0%"} borderRadius="1vmin">
+                <AlertIcon />
+                {error}
+              </Alert>
             </Flex>
-            <Button
-              colorScheme="blue"
-              onClick={handleLogin}
-              className="Button"
-              type="submit"
-            >
-              Login
-            </Button>
-            <Text color="red">{error}</Text>
           </Flex>
         </Center>
       </div>
