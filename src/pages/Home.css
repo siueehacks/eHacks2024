@@ -40,7 +40,7 @@
 }
 
 .TextField {
-  color: black;
   margin-left: auto;
+  max-width: 60%;
   align-self: right;
 }

@@ -6,7 +6,7 @@ const ThankYou = () => {
   return (
     <div className="Page">
       <div className="ContentBox">
-        <Flex direction="column" justify="center" gap="2vh" h="100%">
+        <Flex direction="column" justify="center" gap="2vh" h="100vh">
           <Text>Thank you for registering for SheCode 2023!</Text>
           <Link to="/">
             <Button variant="outline">Return to Homepage</Button>

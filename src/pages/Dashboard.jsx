@@ -21,10 +21,15 @@ const Dashboard = () => {
   const [error, setError] = useState("");
 
   const properties = {
+    submissionTime: "Submission Date",
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
-    submissionTime: "Submission Date",
+    guardianFirstName: "Guardian First Name",
+    guardianLastName: "Guardian Last Name",
+    guardianEmail: "Guardian Email",
+    guardianPhone: "Guardian Phone",
+    allergies: "Allergies",
   };
 
   useEffect(() => {
@@ -52,9 +57,9 @@ const Dashboard = () => {
     }
   }
 
-  async function downloadConsent(resume, mode) {
+  async function downloadConsent(waiver, mode) {
     try {
-      const storageRef = ref(storage, `resumes/${resume}`);
+      const storageRef = ref(storage, `waivers/${waiver}`);
       //if (mode === 0){
       const url = await getDownloadURL(storageRef);
       window.open(url);
@@ -93,11 +98,13 @@ const Dashboard = () => {
   const TableHeader = () => {
     return (
       <Tr>
+        <Th />
+        <Th color="white">Consent</Th>
         {Object.values(properties).map((property) => (
-          <Th color="white">{property}</Th>
+          <Th color="white" fontSize="xs">
+            {property}
+          </Th>
         ))}
-        <Th color="white">Download Consent</Th>
-        <Th/>
       </Tr>
     );
   };
@@ -112,27 +119,29 @@ const Dashboard = () => {
     const doc = props.doc.data();
     return (
       <Tr>
-        {displayProperties(doc)}
         <Td>
-          <Button
-            variant="outline"
-            size="xs"
-            onClick={() => downloadConsent(doc.resume, 0)}
-          >
-            Open
-          </Button>
-          {/*<div onClick={() => downloadConsent(props.doc.resume, 1)}>Download</div>*/}
-        </Td>
-        <Td>
-          <Button
-            variant="outline"
-            size="xs"
-            onClick={() => setModal(true)}
-          >
+          <Button variant="outline" size="xs" onClick={() => setModal(true)}>
             Delete
           </Button>
         </Td>
-        <ConfirmDeleteModal isOpen={modal} onClose={() => setModal(false)} deleteEntry={deleteEntry} doc={props.doc}/>
+        <Td>
+          <Button
+            variant="outline"
+            size="xs"
+            onClick={() => downloadConsent(doc.waiver, 0)}
+          >
+            Open
+          </Button>
+          {/*<div onClick={() => downloadConsent(props.doc.waiver, 1)}>Download</div>*/}
+        </Td>
+        {displayProperties(doc)}
+
+        <ConfirmDeleteModal
+          isOpen={modal}
+          onClose={() => setModal(false)}
+          deleteEntry={deleteEntry}
+          doc={props.doc}
+        />
       </Tr>
     );
   };
@@ -150,12 +159,11 @@ const Dashboard = () => {
   return (
     <div className="Page">
       <div className="ContentBox">
-        <Flex justify="right" w="90%">
+        <Flex justify="left" ml="2vw">
           <Button
             mt="2vh"
             variant="outline"
             onClick={downloadCSV}
-            alignSelf="end"
           >
             Download CSV
           </Button>
@@ -164,7 +172,7 @@ const Dashboard = () => {
           <Flex direction="column" align="center" w="95%">
             <Text color="red.500">{error}</Text>
             <TableContainer maxW="100%" mt="2vh" mb="4vmax">
-              <Table variant="striped">
+              <Table variant="striped" size="sm">
                 <TableHeader />
                 {showRegistrations()}
               </Table>
