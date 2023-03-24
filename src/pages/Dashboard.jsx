@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
-import { ref, getDownloadURL, getBlob } from "firebase/storage";
-import { storage, db, auth } from "../firebaseConfig.js";
+import { getDocs, collection, deleteDoc } from "firebase/firestore";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage, db } from "../firebaseConfig.js";
 import {
   Flex,
   Center,
@@ -13,13 +13,12 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react";
+import ConfirmDeleteModal from "../components/ConfirmDeleteModal.jsx";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const properties = {
     firstName: "First Name",
@@ -36,7 +35,17 @@ const Dashboard = () => {
     try {
       const collectionRef = collection(db, "registrations");
       const registrationSnap = await getDocs(collectionRef);
-      setTableData(registrationSnap.docs.map((doc) => doc.data()));
+      setTableData(registrationSnap.docs);
+    } catch (e) {
+      console.error(e);
+      setError(e.message);
+    }
+  }
+
+  async function deleteEntry(doc) {
+    try {
+      await deleteDoc(doc.ref);
+      loadData();
     } catch (e) {
       console.error(e);
       setError(e.message);
@@ -88,29 +97,42 @@ const Dashboard = () => {
           <Th color="white">{property}</Th>
         ))}
         <Th color="white">Download Consent</Th>
+        <Th/>
       </Tr>
     );
   };
 
-  function displayProperties(props) {
-    console.log(props);
-    return Object.keys(properties).map((key) => <Td>{props.doc[key]}</Td>);
+  function displayProperties(doc) {
+    console.log(doc);
+    return Object.keys(properties).map((key) => <Td>{doc[key]}</Td>);
   }
 
   const DataRow = (props) => {
+    const [modal, setModal] = useState(false);
+    const doc = props.doc.data();
     return (
       <Tr>
-        {displayProperties(props)}
+        {displayProperties(doc)}
         <Td>
           <Button
             variant="outline"
-            maxh="2vmin"
-            onClick={() => downloadConsent(props.doc.resume, 0)}
+            size="xs"
+            onClick={() => downloadConsent(doc.resume, 0)}
           >
             Open
           </Button>
           {/*<div onClick={() => downloadConsent(props.doc.resume, 1)}>Download</div>*/}
         </Td>
+        <Td>
+          <Button
+            variant="outline"
+            size="xs"
+            onClick={() => setModal(true)}
+          >
+            Delete
+          </Button>
+        </Td>
+        <ConfirmDeleteModal isOpen={modal} onClose={() => setModal(false)} deleteEntry={deleteEntry} doc={props.doc}/>
       </Tr>
     );
   };
@@ -129,14 +151,19 @@ const Dashboard = () => {
     <div className="Page">
       <div className="ContentBox">
         <Flex justify="right" w="90%">
-        <Button mt="2vh" variant="outline" onClick={downloadCSV} alignSelf="end">
-          Download CSV
-        </Button>
+          <Button
+            mt="2vh"
+            variant="outline"
+            onClick={downloadCSV}
+            alignSelf="end"
+          >
+            Download CSV
+          </Button>
         </Flex>
         <Center>
-          <Flex direction="column" align="center">
+          <Flex direction="column" align="center" w="95%">
             <Text color="red.500">{error}</Text>
-            <TableContainer maxW="70vw" mt="2vh" mb="4vmax">
+            <TableContainer maxW="100%" mt="2vh" mb="4vmax">
               <Table variant="striped">
                 <TableHeader />
                 {showRegistrations()}

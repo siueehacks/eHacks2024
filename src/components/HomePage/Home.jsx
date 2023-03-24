@@ -1,7 +1,7 @@
 import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 import SocialLinks from "./SocialLinks";
 import { Link } from "react-router-dom";
-import logo from "../../assets/shecodeWhite.png";
+import logo from "../../assets/shecodeWhiteGlow.png";
 
 const Home = () => {
   const earlyDeadline = new Date("April 8, 2023 12:00:00");
