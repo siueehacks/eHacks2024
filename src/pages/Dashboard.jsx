@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { ref, getDownloadURL, getBlob } from "firebase/storage";
-import {storage, db, auth} from "../firebaseConfig.js";
-import { Flex, Center, Button, Text, Table, TableContainer, Tr, Th, Td } from "@chakra-ui/react";
+import { storage, db, auth } from "../firebaseConfig.js";
+import {
+  Flex,
+  Center,
+  Button,
+  Text,
+  Table,
+  TableContainer,
+  Tr,
+  Th,
+  Td,
+} from "@chakra-ui/react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
@@ -19,7 +28,6 @@ const Dashboard = () => {
     submissionTime: "Submission Date",
   };
 
-  
   useEffect(() => {
     loadData();
   }, []);
@@ -39,13 +47,13 @@ const Dashboard = () => {
     try {
       const storageRef = ref(storage, `resumes/${resume}`);
       //if (mode === 0){
-        const url = await getDownloadURL(storageRef);
-        window.open(url);
+      const url = await getDownloadURL(storageRef);
+      window.open(url);
       /*}else{ BLOCKED BY CORS POLICY, LOW PRIORITY
         const blob = await getBlob(storageRef);
         const url = URL.createObjectURL(blob);
         window.location.href = url;
-      }*/ 
+      }*/
     } catch (e) {
       console.error(e);
       setError(e.message);
@@ -64,9 +72,12 @@ const Dashboard = () => {
       });
       csvString += "\n";
     });
-    const blob = new Blob([csvString], { name: "SheCode Registrations", type: "text/csv" });
+    const blob = new Blob([csvString], {
+      name: "SheCode Registrations",
+      type: "text/csv",
+    });
     const url = URL.createObjectURL(blob);
-    console.log(url)
+    console.log(url);
     window.location.href = url;
   }
 
@@ -82,10 +93,8 @@ const Dashboard = () => {
   };
 
   function displayProperties(props) {
-    console.log(props)
-    return Object.keys(properties).map((key) => (
-      <Td>{props.doc[key]}</Td>
-    ));
+    console.log(props);
+    return Object.keys(properties).map((key) => <Td>{props.doc[key]}</Td>);
   }
 
   const DataRow = (props) => {
@@ -93,7 +102,13 @@ const Dashboard = () => {
       <Tr>
         {displayProperties(props)}
         <Td>
-          <Button variant="outline" maxh="2vmin" onClick={() => downloadConsent(props.doc.resume, 0)}>Open</Button>
+          <Button
+            variant="outline"
+            maxh="2vmin"
+            onClick={() => downloadConsent(props.doc.resume, 0)}
+          >
+            Open
+          </Button>
           {/*<div onClick={() => downloadConsent(props.doc.resume, 1)}>Download</div>*/}
         </Td>
       </Tr>
@@ -107,20 +122,22 @@ const Dashboard = () => {
     if (tableData.length === 0) {
       return <p>No registrations yet!</p>;
     }
-    return tableData.map((doc) => (
-      <DataRow doc={doc} />
-    ));
+    return tableData.map((doc) => <DataRow doc={doc} />);
   }
 
   return (
     <div className="Page">
       <div className="ContentBox">
-      <Button mt="2vh" variant="outline" onClick={downloadCSV}>Download CSV</Button>
+        <Flex justify="right" w="90%">
+        <Button mt="2vh" variant="outline" onClick={downloadCSV} alignSelf="end">
+          Download CSV
+        </Button>
+        </Flex>
         <Center>
           <Flex direction="column" align="center">
             <Text color="red.500">{error}</Text>
-            <TableContainer justify="center" maxW="70vw">
-              <Table variant='striped'>
+            <TableContainer maxW="70vw" mt="2vh" mb="4vmax">
+              <Table variant="striped">
                 <TableHeader />
                 {showRegistrations()}
               </Table>
