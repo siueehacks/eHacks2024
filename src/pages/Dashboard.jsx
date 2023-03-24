@@ -82,17 +82,16 @@ const Dashboard = () => {
     csvString += "\n";
     tableData.forEach((doc) => {
       Object.keys(properties).forEach((key) => {
-        csvString += `"${doc[key]}",`;
+        csvString += `"${doc.data()[key]}",`;
       });
       csvString += "\n";
     });
-    const blob = new Blob([csvString], {
-      name: "SheCode Registrations",
-      type: "text/csv",
-    });
-    const url = URL.createObjectURL(blob);
-    console.log(url);
-    window.location.href = url;
+    console.log(csvString)
+    const blob = new Blob([csvString], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "SheCodeRegistrations.csv";
+    a.click();
   }
 
   const TableHeader = () => {
@@ -160,11 +159,7 @@ const Dashboard = () => {
     <div className="Page">
       <div className="ContentBox">
         <Flex justify="left" ml="2vw">
-          <Button
-            mt="2vh"
-            variant="outline"
-            onClick={downloadCSV}
-          >
+          <Button mt="2vh" variant="outline" onClick={downloadCSV}>
             Download CSV
           </Button>
         </Flex>
