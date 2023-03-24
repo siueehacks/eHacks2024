@@ -1,7 +1,9 @@
-import { Flex, Button, Box, Center } from "@chakra-ui/react";
+import { Flex, Button, Text, Center } from "@chakra-ui/react";
 import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytesResumable } from "firebase/storage";
-import storage from "../firebaseConfig.js";
+import { storage, db } from "../firebaseConfig.js";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Register = () => {
@@ -11,14 +13,15 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [buttonLabel, setButtonLabel] = useState("Submit");
-
+  const navigate = useNavigate();
+  
   // Handles input change event and updates state
   function handleChange(event) {
     setFile(event.target.files[0]);
     console.log(file);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!file) {
       alert("Please choose a file first!");
     }
@@ -34,23 +37,22 @@ const Register = () => {
         .pop()}`,
     };
 
-    const formRef = ref(
-      storage,
-      `/formData/${lastName}${firstName}FormData_${date}.json`
-    );
-
-    const consentRef = ref(
-      storage,
-      `/Resumes/${lastName}${firstName}ConsentForm_${date}.${file.name
-        .split(".")
-        .pop()}`
-    );
-    uploadBytesResumable(
-      formRef,
-      new Blob([JSON.stringify(formData)], { type: "application/json" })
-    );
-    uploadBytesResumable(consentRef, file);
+    try {
+      const docRef = await addDoc(collection(db, "registrations"), formData);
+      console.log("Document written with ID: ", docRef.id);
+      const consentRef = ref(
+        storage,
+        `/resumes/${lastName}${firstName}ConsentForm_${date}.${file.name
+          .split(".")
+          .pop()}`
+      );
+      uploadBytesResumable(consentRef, file);
+    } catch (e) {
+      console.error(e);
+      setMessage("Error submitting form. Please try again.");
+    }
     setButtonLabel("Submitted!");
+    navigate("/")
   }
 
   return (
@@ -116,7 +118,7 @@ const Register = () => {
             >
               {buttonLabel}
             </Button>
-            <p>{message}</p>
+            <Text color="red">{message}</Text>
             <p>Website made with {"\u2764"} by SIUE Student Morgan Jackson</p>
           </Flex>
         </Center>

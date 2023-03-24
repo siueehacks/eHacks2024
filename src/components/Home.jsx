@@ -43,11 +43,9 @@ const Home = () => {
         )}
       </Link>
       */}
-      <Link to="/register">
-        <Button colorScheme="Black" variant="outline">
-          Registration Coming Soon
-        </Button>
-      </Link>
+      <Button colorScheme="Black" variant="outline">
+        Registration Coming Soon
+      </Button>
       <Box>
         <Text
           mt="10px"
