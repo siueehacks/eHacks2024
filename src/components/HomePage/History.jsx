@@ -1,9 +1,9 @@
 import { Text, Box, Flex, Image } from "@chakra-ui/react";
-import darla1 from "../assets/press/SheCode-Darla.jpg";
-import darla2 from "../assets/press/SheCode-Darla2.jpg";
-import dennis from "../assets/press/SheCode-Dennis.jpg";
-import participants from "../assets/press/SheCode-Participants.jpg";
-import rachel from "../assets/press/SheCode-Rachel.jpg";
+import darla1 from "../../assets/press/SheCode-Darla.jpg";
+import darla2 from "../../assets/press/SheCode-Darla2.jpg";
+import dennis from "../../assets/press/SheCode-Dennis.jpg";
+import participants from "../../assets/press/SheCode-Participants.jpg";
+import rachel from "../../assets/press/SheCode-Rachel.jpg";
 import "./Basics.css"
 
 

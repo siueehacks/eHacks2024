@@ -1,9 +1,9 @@
-import Home from "../components/Home";
-import About from "../components/About";
-import Contact from "../components/Contact";
-import Faq from "../components/Faq";
-import History from "../components/History";
-import Schedule from "../components/Schedule";
+import Home from "../components/HomePage/Home";
+import About from "../components/HomePage/About";
+import Contact from "../components/HomePage/Contact";
+import Faq from "../components/HomePage/Faq";
+import History from "../components/HomePage/History";
+import Schedule from "../components/HomePage/Schedule";
 import Navbar from "../components/Navbar";
 import "./Home.css";
 
