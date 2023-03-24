@@ -14,11 +14,13 @@ import {
   Td,
 } from "@chakra-ui/react";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal.jsx";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const properties = {
     submissionTime: "Submission Date",
@@ -44,6 +46,7 @@ const Dashboard = () => {
     } catch (e) {
       console.error(e);
       setError(e.message);
+      navigate("/login");
     }
   }
 
