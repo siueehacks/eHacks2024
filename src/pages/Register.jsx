@@ -52,7 +52,7 @@ const Register = () => {
       setMessage("Error submitting form. Please try again.");
     }
     setButtonLabel("Submitted!");
-    navigate("/")
+    navigate("/thankyou")
   }
 
   return (
@@ -119,7 +119,6 @@ const Register = () => {
               {buttonLabel}
             </Button>
             <Text color="red">{message}</Text>
-            <p>Website made with {"\u2764"} by SIUE Student Morgan Jackson</p>
           </Flex>
         </Center>
       </div>
