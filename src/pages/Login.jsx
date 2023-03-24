@@ -1,10 +1,8 @@
 import "./Home.css";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection } from "firebase/firestore";
-import { ref } from "firebase/storage";
-import { storage, db, auth } from "../firebaseConfig.js";
-import { Flex, Center, Button, Text } from "@chakra-ui/react";
+import { auth } from "../firebaseConfig.js";
+import { Flex, Center, Button, Text, Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -38,7 +36,7 @@ const Login = () => {
             <Flex gap="2vw" direction="column" justify="center" h="100%">
               <Flex align="left">
                 <label htmlFor="email">Email: </label>
-                <input
+                <Input
                   type="email"
                   id="email"
                   value={email}
@@ -49,7 +47,7 @@ const Login = () => {
               </Flex>
               <Flex align="left">
                 <label htmlFor="password">Password: </label>
-                <input
+                <Input
                   type="password"
                   id="password"
                   value={password}

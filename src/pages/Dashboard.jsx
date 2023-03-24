@@ -57,7 +57,7 @@ const Dashboard = () => {
     }
   }
 
-  async function downloadConsent(waiver, mode) {
+  async function downloadWaiver(waiver, mode) {
     try {
       const storageRef = ref(storage, `waivers/${waiver}`);
       //if (mode === 0){
@@ -99,7 +99,7 @@ const Dashboard = () => {
     return (
       <Tr>
         <Th />
-        <Th color="white">Consent</Th>
+        <Th color="white">Waiver</Th>
         {Object.values(properties).map((property) => (
           <Th color="white" fontSize="xs">
             {property}
@@ -128,11 +128,11 @@ const Dashboard = () => {
           <Button
             variant="outline"
             size="xs"
-            onClick={() => downloadConsent(doc.waiver, 0)}
+            onClick={() => downloadWaiver(doc.waiver, 0)}
           >
             Open
           </Button>
-          {/*<div onClick={() => downloadConsent(props.doc.waiver, 1)}>Download</div>*/}
+          {/*<div onClick={() => downloadWaiver(props.doc.waiver, 1)}>Download</div>*/}
         </Td>
         {displayProperties(doc)}
 
