@@ -1,6 +1,7 @@
 import "./NavBar.css";
 import nav from "./nav.json";
 import { useState } from "react";
+import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
@@ -10,7 +11,7 @@ export default function Navbar() {
       { window.innerWidth >= window.innerHeight &&
         <div className="NavBar">
         {nav.components.map((anchor) => (
-          <a href={anchor.id}>{anchor.name}</a>
+          <HashLink to={anchor.id}>{anchor.name}</HashLink>
         ))}
         </div>
       }
@@ -26,7 +27,7 @@ export default function Navbar() {
         window.innerWidth < window.innerHeight && expanded &&
         <div className="NavBurger">
           {nav.components.map((anchor) => (
-          <a href={anchor.id} onClick={() => setExpanded(false)}>{anchor.name}</a>
+          <HashLink to={anchor.id} onClick={() => setExpanded(false)}>{anchor.name}</HashLink>
           ))}
         </div>
       }
