@@ -7,7 +7,6 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
-import { Children } from "react";
 
 const Faq = () => {
   const FaqItem = (props) => {
