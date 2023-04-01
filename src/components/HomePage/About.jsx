@@ -1,6 +1,5 @@
 import { Text, Box } from "@chakra-ui/react";
 
-
 const About = () => {
   return (
     <Box
@@ -22,9 +21,10 @@ const About = () => {
           fontSize="xl"
           fontFamily="monospace"
         >
-          SheCode is a one day event hosted by SIUE for high school
-          girls to learn the basics of coding. This is our first time returning
-          since before COVID. More details coming soon!
+          SheCode is a one day event hosted by SIUE for high school girls to
+          learn the basics of coding. This is our first time returning since
+          before COVID. See the "History" section for press from past events. We
+          hope to see you there!
         </Text>
       </Box>
     </Box>

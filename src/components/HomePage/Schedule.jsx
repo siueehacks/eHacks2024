@@ -67,7 +67,7 @@ const Schedule = () => {
             <ScheduleItem time="10:15 AM" event="Fun & Games" />
             <ScheduleItem time="10:30 AM" event="Welcome & Introductions" />
             <ScheduleItem time="10:45 AM" event="Begin Working On Projects" />
-            <ScheduleItem time="12:15 PM" event="Lunch On Us" />
+            <ScheduleItem time="12:15 PM" event="Lunch (On Us)" />
             <ScheduleItem time="12:45 PM" event="Resume Working On Projects" />
             <ScheduleItem time="2:15 PM" event="Coming To A Close" />
             <ScheduleItem time="2:30 PM" event="Event Ends" />
