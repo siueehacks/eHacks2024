@@ -21,7 +21,7 @@ const Faq = () => {
             <AccordionIcon />
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4} fontSize="lg">
+        <AccordionPanel pb={4} textAlign="left" fontSize="lg">
           {props.children}
         </AccordionPanel>
       </AccordionItem>
