@@ -6,6 +6,7 @@ import {
   AccordionIcon,
   Text,
   Box,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 
 const Faq = () => {
@@ -47,14 +48,14 @@ const Faq = () => {
         >
           <FaqItem question="When and where is SheCode?">
             SheCode will be held on Saturday, April 22th, 2023 in{" "}
-            <a href="https://goo.gl/maps/y6jrS4WREQ72">
+            <ChakraLink href="https://goo.gl/maps/y6jrS4WREQ72" color='teal.200' isExternal>
               Southern Illinois University Edwardsville's Engineering Building
-            </a>
+            </ChakraLink>
             .
           </FaqItem>
           <FaqItem question="Where do I park?">
             Parking is available for free in{" "}
-            <a href="https://goo.gl/maps/8Q5Z1Z1Z1Z2Z2">Visitor Lot B</a> near
+            <ChakraLink href="https://goo.gl/maps/fDcNmuUBf769yZJG7" color='teal.200' isExternal>Visitor Lot B</ChakraLink> near
             the Engineering Building.
           </FaqItem>
           <FaqItem question="Who can participate?">

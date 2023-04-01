@@ -1,11 +1,11 @@
-import { Text, Box, Flex, Image } from "@chakra-ui/react";
+import { Text, Box, Flex, Image, Link as ChakraLink } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import darla1 from "../../assets/press/SheCode-Darla.jpg";
 import darla2 from "../../assets/press/SheCode-Darla2.jpg";
 import dennis from "../../assets/press/SheCode-Dennis.jpg";
 import participants from "../../assets/press/SheCode-Participants.jpg";
 import rachel from "../../assets/press/SheCode-Rachel.jpg";
-import "./Basics.css"
-
+import "./Basics.css";
 
 const About = () => {
   return (
@@ -29,19 +29,32 @@ const About = () => {
           fontFamily="monospace"
         >
           Past Press:
-          <Text color="#9FDFFF">
-            <a href="https://www.siue.edu/news/2020/03/SIUESheCodeEngagesYoungWomeninComputerScience.shtml">2020 Press Release</a><br/>
-            <a href="https://www.siue.edu/news/2018/12/SIUE-SheCode-Event-Engages-Young-Women-in-Computer-Science.shtml">2018 Press Release</a>
+          <Text color="teal.200">
+            <ChakraLink
+              href="https://www.siue.edu/news/2020/03/SIUESheCodeEngagesYoungWomeninComputerScience.shtml"
+              isExternal
+            >
+              2020 Press Release
+              <ExternalLinkIcon mx="4px" />
+            </ChakraLink>
+            <br />
+            <ChakraLink
+              href="https://www.siue.edu/news/2018/12/SIUE-SheCode-Event-Engages-Young-Women-in-Computer-Science.shtml"
+              isExternal
+            >
+              2018 Press Release
+              <ExternalLinkIcon mx="4px" />
+            </ChakraLink>
           </Text>
-          <br/>
+          <br />
           Photos:
         </Text>
         <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
-          <Image src={darla1}/>
-          <Image src={dennis}/>
-          <Image src={participants}/>
-          <Image src={darla2}/>
-          <Image src={rachel}/>
+          <Image src={darla1} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={dennis} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={participants} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={darla2} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={rachel} objectFit='cover' alt="Organizers & Students"/>
         </Flex>
       </Box>
     </Box>
