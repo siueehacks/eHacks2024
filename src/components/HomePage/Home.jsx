@@ -1,11 +1,60 @@
 import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
-import SocialLinks from "./SocialLinks";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/shecodeWhiteGlow.png";
+import { getRegistrationCount } from "../../data/firestoreOps";
+import { CAPACITY, DEADLINE } from "../../config";
 
 const Home = () => {
-  const earlyDeadline = new Date("April 8, 2023 12:00:00");
-  const deadline = new Date("April 15, 2023 12:00:00");
+  const [capacityMet, setCapacityMet] = useState(true);
+  const [loading, setLoading] = useState(true);
+  // deadline must be set to CST or CDT according to daylight savings time
+  useEffect(() => {
+    getRegistrationCount().then((count) => {
+      console.log(count)
+      if (count >= CAPACITY) {
+        setCapacityMet(true);
+      } else {
+        setCapacityMet(false);
+      }
+      setLoading(false);
+    });
+  }, []);
+
+  // renders the register button based on the deadline and capacity
+  const RegisterButton = () => {
+    if (DEADLINE > new Date()) {
+      if (loading) {
+        return (
+          <Button colorScheme="Black" variant="outline">
+            Loading...
+          </Button>
+        );
+      } else {
+        if (capacityMet) {
+          return (
+            <Button colorScheme="Black" variant="outline">
+              Capacity Met
+            </Button>
+          );
+        } else {
+          return (
+            <Link to="/register">
+              <Button colorScheme="Black" variant="outline">
+                Register to Participate
+              </Button>
+            </Link>
+          );
+        }
+      }
+    } else {
+      return (
+        <Button colorScheme="Black" variant="outline">
+          Deadline Passed
+        </Button>
+      );
+    }
+  };
 
   return (
     <Box
@@ -16,7 +65,7 @@ const Home = () => {
       alignItems="center"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Image src={logo} alt="SheCode Logo" maxW="80%"/>
+        <Image src={logo} alt="SheCode Logo" maxW="80%" />
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
           April 22, 2023
         </Text>
@@ -26,26 +75,7 @@ const Home = () => {
           Edwardsville, IL
         </Text>
       </Box>
-      {/*}
-      <Link to="/register">
-        {deadline > new Date() ? (
-          <Button
-            colorScheme="Black"
-            variant="outline"
-            onClick={handleRegister}
-          >
-            Apply to Participate
-          </Button>
-        ) : (
-          <Button colorScheme="Black" variant="outline">
-            Deadline Passed
-          </Button>
-        )}
-      </Link>
-      */}
-      <Button colorScheme="Black" variant="outline">
-        Registration Coming Soon
-      </Button>
+      <RegisterButton/>
       <Box>
         <Text
           mt="10px"
@@ -54,8 +84,12 @@ const Home = () => {
           fontSize="xl"
           fontFamily="monospace"
         >
-          <Text as={earlyDeadline > new Date() ? "" : "s"}>Priority Application Deadline: TBA</Text>
-          <Text as={deadline > new Date() ? "" : "s"}>Final Application Deadline: TBA</Text>
+          <Text as={DEADLINE > new Date() ? "" : "s"}>
+            Registration Deadline: {DEADLINE.toLocaleString()}
+          </Text>
+          <Text as={capacityMet ? "s" : ""}>
+            Max Capacity: {CAPACITY} Participants
+          </Text>
         </Text>
       </Box>
     </Box>
