@@ -1,10 +1,12 @@
 import { Flex, Button, Text, Center, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage, db } from "../firebaseConfig.js";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import { getRegistrationCount } from "../data/firestoreOps.js";
+import { CAPACITY, DEADLINE } from "../config.js";
 
 const Register = () => {
   const [file, setFile] = useState("");
@@ -17,7 +19,16 @@ const Register = () => {
   const [guardianPhone, setGuardianPhone] = useState("");
   const [allergies, setAllergies] = useState("");
   const [message, setMessage] = useState("");
+  const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getRegistrationCount().then((count) => {
+      if (count >= CAPACITY) {
+        setAtCapacity(true);
+      }
+    });
+  }, []);
 
   // Handles Input change event and updates state
   function handleChange(event) {
@@ -26,17 +37,38 @@ const Register = () => {
   }
 
   async function handleSubmit() {
-    
     const date = new Date();
 
-    if (firstName === "" || lastName === "" || email === "" || guardianFirstName === "" || guardianLastName === "" || guardianPhone === "") {
+    if (date > DEADLINE) {
+      setMessage("Registration deadline has passed, sorry!");
+      return;
+    }
+
+    if (atCapacity) {
+      setMessage("Event has reached participant capacity, sorry!");
+      return;
+    }
+
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      guardianFirstName === "" ||
+      guardianLastName === "" ||
+      guardianPhone === ""
+    ) {
       setMessage("Please fill out all required fields.");
       return;
     }
-    if (!file) {
-      setMessage("You must attach the waiver.");
-      return;
+    let waiverName = "";
+    if (file === "") {
+      waiverName = "No Waiver";
+    } else {
+      waiverName = `${lastName}${firstName}Waiver_${date}.${file.name
+        .split(".")
+        .pop()}`;
     }
+
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -47,21 +79,21 @@ const Register = () => {
       guardianEmail: guardianEmail,
       guardianPhone: guardianPhone,
       submissionTime: date.toLocaleString(),
-      waiver: `${lastName}${firstName}Waiver_${date}.${file.name
-        .split(".")
-        .pop()}`,
+      waiver: waiverName,
     };
 
     try {
       const docRef = await addDoc(collection(db, "registrations"), formData);
       console.log("Document written with ID: ", docRef.id);
-      const waiverRef = ref(
-        storage,
-        `/waivers/${lastName}${firstName}Waiver_${date}.${file.name
-          .split(".")
-          .pop()}`
-      );
-      uploadBytesResumable(waiverRef, file);
+      if (file !== "") {
+        const waiverRef = ref(
+          storage,
+          `/waivers/${lastName}${firstName}Waiver_${date}.${file.name
+            .split(".")
+            .pop()}`
+        );
+        uploadBytesResumable(waiverRef, file);
+      }
     } catch (e) {
       console.error(e);
       setMessage("Error submitting form. Please try again.");
@@ -88,8 +120,10 @@ const Register = () => {
             gap="1vh"
             maxW="100%"
             h="100%"
-          > 
-            <Text fontSize="4xl" mb="2vw">SheCode 2023 Registration</Text>
+          >
+            <Text fontSize="4xl" mb="2vw">
+              SheCode 2023 Registration
+            </Text>
             <form onSubmit={handleSubmit}>
               <Flex w="100%" gap="2vw" wrap="wrap" mb="4vh">
                 <Flex gap="2vw" direction="column" maxW="100%">
@@ -188,15 +222,16 @@ const Register = () => {
                   </Flex>
                 </Flex>
               </Flex>
-              <Text>Please Download and Sign the Waiver, Then Upload The Signed Waiver Below</Text>
+              <Text maxW="100vh">
+                The following waiver is REQUIRED to participate. Download and
+                either submit a signed copy of the waiver (Photo or PDF) with
+                this form or bring a printed, signed copy to the event.
+              </Text>
               <Button m="1vh" variant="outline" onClick={downloadWaiverForm}>
                 Download Waiver
               </Button>
-              <br/>
-              <label
-                style={{ marginRight: "auto" }}
-                htmlFor="lastName"
-              >
+              <br />
+              <label style={{ marginRight: "auto" }} htmlFor="lastName">
                 Upload Signed Waiver
               </label>
               <Input
@@ -205,7 +240,6 @@ const Register = () => {
                 id="waiver"
                 accept="image/*,application/pdf"
                 onChange={handleChange}
-                required
               />
             </form>
             <Button

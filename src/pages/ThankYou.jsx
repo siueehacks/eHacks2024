@@ -8,6 +8,9 @@ const ThankYou = () => {
       <div className="ContentBox">
         <Flex direction="column" justify="center" gap="2vh" h="100vh">
           <Text>Thank you for registering for SheCode 2023!</Text>
+          <Text>Your registration is accepted, conditional on a valid waiver.</Text>
+          <Text>If you did not submit a waiver, you must bring a signed copy in person to the event.</Text>
+          <Text>We will be in touch if there are issues with your registration info!</Text>
           <Link to="/">
             <Button variant="outline">Return to Homepage</Button>
           </Link>

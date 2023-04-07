@@ -7,6 +7,7 @@ import Schedule from "../components/HomePage/Schedule";
 import Navbar from "../components/Navbar";
 import "./Home.css";
 
+
 const HomePage = () => {
   return (
     <div className="Page">
