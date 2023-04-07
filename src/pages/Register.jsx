@@ -71,7 +71,7 @@ const Register = () => {
 
   function downloadWaiverForm() {
     const link = document.createElement("a");
-    link.href = "/2018SheCodeMinorForm.pdf";
+    link.href = "/SheCode2023Forms.pdf";
     link.setAttribute("download", "SheCode2023Waiver.pdf");
     document.body.appendChild(link);
     link.click();
