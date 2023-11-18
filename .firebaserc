@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "ehacks2024-development",
+    "production": "ehacks2024"
+  }
+}

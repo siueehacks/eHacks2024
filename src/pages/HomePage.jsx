@@ -5,17 +5,21 @@ import Faq from "../components/HomePage/Faq";
 import History from "../components/HomePage/History";
 import Schedule from "../components/HomePage/Schedule";
 import Navbar from "../components/Navbar";
+import ComingSoon from "../components/HomePage/ComingSoon";
 import "./Home.css";
 
 
 const HomePage = () => {
   return (
     <div className="Page">
-      <div>
+      {/* <div>
         <Navbar/>
-      </div>
+      </div> */}
       <div className="ContentBox">
-        <section className="Anchor" id="home">
+        <section className="Anchor" id="comingSoon">
+          <ComingSoon />
+        </section>
+        {/* <section className="Anchor" id="home">
           <Home />
         </section>
         <section className="Anchor" id="about">
@@ -33,7 +37,7 @@ const HomePage = () => {
         <section className="Anchor" id="contact">
           <Contact />
         </section>
-        <p>Website made with {'\u2764'} by SIUE Student Morgan Jackson</p>
+        <p>Website made with {'\u2764'} by SIUE Student Morgan Jackson</p> */}
         <br/>
       </div>
     </div>
