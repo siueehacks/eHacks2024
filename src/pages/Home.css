@@ -2,24 +2,24 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 80%;
+  width: 96%;
   height: 100%;
-  min-height: 100vh;
-  background-color: purple;
+  min-height: 96vh;
+  background-color: black;
   color: white;
-  background-image: url(../assets/BG.webp);
+  /* background-image: url(../assets/BG.webp); */
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 
-    0 0 15px 5px #0ff,
-    0 0 15px 5px #0ff inset, 
-    0 0 3px 3px #fff,
-    0 0 3px 3px #fff inset,
-    0 0 1px 2px #fff,
-    0 0 1px 2px #fff inset,
-    0 0 0px 1px #fff,
-    0 0 0px 1px #fff inset;
+    0 0 15px 5px #9e3d13,
+    0 0 15px 5px #9e3d13 inset, 
+    0 0 3px 3px #9e3d13,
+    0 0 3px 3px #000 inset,
+    0 0 1px 2px #000,
+    0 0 1px 2px #000 inset,
+    0 0 0px 1px #000,
+    0 0 0px 1px #000 inset;
 }
 
 .Page {
@@ -29,8 +29,8 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: rgb(81, 0, 128);
-  background-image: url(../assets/BG_tiled.webp);
+  background-color: #9e3d13;
+  /* background-image: url(../assets/BG_tiled.webp); */
   background-size: 100%;
 }
 

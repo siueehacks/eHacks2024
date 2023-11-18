@@ -1,9 +1,11 @@
 import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/shecodeWhiteGlow.png";
+import logo from "../../assets/eHacksLogo.png";
+import sponsorLogo from "../../assets/shecodeWhiteGlow.png"
 import { getRegistrationCount } from "../../data/firestoreOps";
 import { CAPACITY, DEADLINE } from "../../config";
+import SocialLinks from "./SocialLinks.jsx";
 
 const Home = () => {
   const [capacityMet, setCapacityMet] = useState(true);
@@ -65,7 +67,24 @@ const Home = () => {
       alignItems="center"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Image src={logo} alt="SheCode Logo" maxW="80%" />
+        <a href="https://ehacks.cs.siue.edu/" rel="external">
+        <Image
+            src={sponsorLogo}
+            alt="Presenting Sponsor"
+            maxW="20vmax"
+            maxH="13vh"
+            mt="8vmin"
+          />
+        </a>
+        <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace" as="i">
+          presents
+        </Text>
+        <Image 
+          src={logo}
+          alt="eHacks Logo"
+          maxW="80%"
+          mb="2vmin"
+        />
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
           April 22, 2023
         </Text>
@@ -92,6 +111,7 @@ const Home = () => {
           </Text>
         </Text>
       </Box>
+      <SocialLinks />
     </Box>
   );
 };

@@ -18,7 +18,7 @@
 .env.test.local
 .env.production.local
 .firebase
-.github
+#.github
 .vscode
 
 npm-debug.log*
