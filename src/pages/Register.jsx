@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { getRegistrationCount } from "../data/firestoreOps.js";
 import { CAPACITY, DEADLINE } from "../config.js";
+import Waves from "../components/Waves.jsx"
 
 const Register = () => {
   const [file, setFile] = useState("");
@@ -111,6 +112,7 @@ const Register = () => {
 
   return (
     <div className="Page">
+      <Waves />
       <div className="ContentBox">
         <Center minH="100vh">
           <Flex
@@ -122,7 +124,7 @@ const Register = () => {
             h="100%"
           >
             <Text fontSize="4xl" mb="2vw">
-              SheCode 2023 Registration
+              eHacks 2024 Registration
             </Text>
             <form onSubmit={handleSubmit}>
               <Flex w="100%" gap="2vw" wrap="wrap" mb="4vh">

@@ -18,7 +18,7 @@ const About = () => {
     >
       <Box display="flex" flexDirection="column" alignItems="center">
         <Text fontSize="6xl" fontFamily="monospace">
-          History
+          Sponsors
         </Text>
         <Text
           mt="-5px"

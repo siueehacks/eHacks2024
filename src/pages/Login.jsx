@@ -1,6 +1,6 @@
 import "./Home.css";
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { auth } from "../firebaseConfig.js";
 import {
   Flex,
@@ -8,9 +8,10 @@ import {
   Button,
   Input,
   Alert,
-  AlertIcon,
+  AlertIcon
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import Waves from "../components/Waves.jsx"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,18 +19,40 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  function checkSignedIn() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("logged in");
+        navigate("/dashboard");
+      } else {
+        console.log("logged out");
+      }
+    })
+  }
+
+  useEffect(() => {
+    checkSignedIn()
+  }, []);
+
   async function handleLogin() {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard");
-    } catch (e) {
+      await setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, email, password);
+      })
+      .catch((e) => {
       setError("Bad Credentials");
-    }
+    });
   }
 
   return (
     <div className="Page">
+      <Waves static="true"/>
       <div className="ContentBox">
+      <Flex justify="left" ml="2vw">
+          <Link to="/#">
+            <Button variant="outline" _hover={{ bg: '#969696' }}>Return to Homepage</Button>
+          </Link>
+        </Flex>
         <Center>
           <Flex
             direction="column"
@@ -68,6 +91,7 @@ const Login = () => {
                 onClick={handleLogin}
                 className="Button"
                 type="submit"
+                _hover={{ bg: '#969696' }}
               >
                 Login
               </Button>

@@ -39,7 +39,7 @@ const Schedule = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      maxW="80vw"
+      width="100%"
     >
       <Box
         display="flex"

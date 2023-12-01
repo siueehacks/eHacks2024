@@ -1,4 +1,8 @@
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Flex, Image } from "@chakra-ui/react";
+import darla1 from "../../assets/press/SheCode-Darla.jpg";
+import darla2 from "../../assets/press/SheCode-Darla2.jpg";
+import dennis from "../../assets/press/SheCode-Dennis.jpg";
+import participants from "../../assets/press/SheCode-Participants.jpg";
 
 const About = () => {
   return (
@@ -21,11 +25,19 @@ const About = () => {
           fontSize="xl"
           fontFamily="monospace"
         >
-          SheCode is a one day event hosted at SIUE for female high school students to
-          learn the basics of coding. This is our first time returning since
-          before COVID. See the "History" section for press from past events. We
-          hope to see you there!
+          eHacks is Southern Illinois University Edwardsville's annual hackathon, making our
+          return from pre-pandemic. It is a 36-hour, weekend long event where participants come
+          together to create innovative projects. eHacks provides a great opportunity for students
+          to learn new skills, network with other students, and have fun! This year, eHacks will
+          take place March 3-5. It will be a fully in person event that will take place at the
+          T-Rex innovation center in St. Louis, MO.
         </Text>
+        <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
+          <Image src={darla1} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={dennis} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={participants} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={darla2} objectFit='cover' alt="Organizers & Students"/>
+        </Flex>
       </Box>
     </Box>
   );

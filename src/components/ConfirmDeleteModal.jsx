@@ -14,10 +14,10 @@ export default function ConfirmDeleteModal(props){
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    <Button colorScheme="gray" mr={3} onClick={onClose}>
                         Cancel
                     </Button>
-                    <Button variant="ghost" onClick={() => deleteEntry(doc)}>
+                    <Button colorScheme="red" variant="ghost" onClick={() => deleteEntry(doc)}>
                         Delete
                     </Button>
                 </ModalFooter>

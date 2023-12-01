@@ -5,7 +5,7 @@ import Faq from "../components/HomePage/Faq";
 import History from "../components/HomePage/History";
 import Schedule from "../components/HomePage/Schedule";
 import Navbar from "../components/Navbar";
-import ComingSoon from "../components/HomePage/ComingSoon";
+import Waves from "../components/Waves";
 import "./Home.css";
 
 
@@ -15,6 +15,7 @@ const HomePage = () => {
       <div>
         <Navbar/>
       </div>
+        <Waves />
       <div className="ContentBox">
         <section className="Anchor" id="home">
           <Home />
@@ -34,7 +35,7 @@ const HomePage = () => {
         <section className="Anchor" id="contact">
           <Contact />
         </section>
-        <p>Website made with {'\u2764'} by SIUE Student Morgan Jackson</p>
+        <p>Website made with {'\u2764'} by eHacks volunteers and alumni.</p>
         <br/>
       </div>
     </div>

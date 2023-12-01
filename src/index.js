@@ -22,10 +22,10 @@ root.render(
       <HashRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          {/* <Route path="/register" element={<Register/>} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/thankyou" element={<ThankYou/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/dashboard" element={<Dashboard/>} /> */}
+          <Route path="/dashboard" element={<Dashboard/>} />
         </Routes>
       </HashRouter>
     </ChakraProvider>

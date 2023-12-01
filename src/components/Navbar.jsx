@@ -2,6 +2,7 @@ import "./NavBar.css";
 import nav from "./nav.json";
 import { useState } from "react";
 import { HashLink } from "react-router-hash-link";
+import getRandomRGBColor from "./Colors.jsx";
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
@@ -9,7 +10,7 @@ export default function Navbar() {
   return (
     <div>
       { window.innerWidth >= window.innerHeight &&
-        <div className="NavBar">
+        <div className="NavBar" style={{'background-color': getRandomRGBColor()}}>
         {nav.components.map((anchor) => (
           <HashLink to={anchor.id}>{anchor.name}</HashLink>
         ))}
