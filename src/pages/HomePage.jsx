@@ -6,7 +6,9 @@ import History from "../components/HomePage/History";
 import Schedule from "../components/HomePage/Schedule";
 import Navbar from "../components/Navbar";
 import Waves from "../components/Waves";
+import { Button, Flex, Text, Box } from "@chakra-ui/react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 
 const HomePage = () => {
@@ -35,7 +37,23 @@ const HomePage = () => {
         <section className="Anchor" id="contact">
           <Contact />
         </section>
-        <p>Website made with {'\u2764'} by eHacks volunteers and alumni.</p>
+        <Flex direction="row" align="center" justify="space-between">
+          <Box>
+            <Link to="/dashboard">
+              <Button
+                variant="outline"
+                className="Button"
+                _hover={{ bg: '#969696' }}
+                >
+                Dashboard
+              </Button>
+            </Link>
+          </Box>
+          <Box>
+          <Text>Website made with {'\u2764'} by eHacks volunteers and alumni.</Text>
+          </Box>
+          <Box>a</Box>
+        </Flex>
         <br/>
       </div>
     </div>

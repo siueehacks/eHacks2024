@@ -45,11 +45,9 @@ const Login = () => {
   }
 
   return (
-    <div className="Page">
-      <Waves static="true"/>
       <div className="ContentBox">
       <Flex justify="left" ml="2vw">
-          <Link to="/#">
+          <Link to="/">
             <Button variant="outline" _hover={{ bg: '#969696' }}>Return to Homepage</Button>
           </Link>
         </Flex>
@@ -103,8 +101,16 @@ const Login = () => {
           </Flex>
         </Center>
       </div>
-    </div>
   );
 };
 
-export default Login;
+const LoginPage = () => {
+  return (
+    <div className="Page">
+      <Waves static="true"/>
+      <Login />
+    </div>
+  );
+}
+
+export default LoginPage;
