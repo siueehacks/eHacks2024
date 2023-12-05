@@ -38,7 +38,7 @@ const HomePage = () => {
           <Contact />
         </section>
         <Flex direction="row" align="center" justify="space-between">
-          <Box>
+          <Flex align="center" justify="left" w="30%">
             <Link to="/dashboard">
               <Button
                 variant="outline"
@@ -48,11 +48,11 @@ const HomePage = () => {
                 Dashboard
               </Button>
             </Link>
-          </Box>
+          </Flex>
           <Box>
           <Text>Website made with {'\u2764'} by eHacks volunteers and alumni.</Text>
           </Box>
-          <Box>a</Box>
+          <Box w="30%"></Box>
         </Flex>
         <br/>
       </div>
