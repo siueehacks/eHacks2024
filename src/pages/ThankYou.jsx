@@ -1,10 +1,12 @@
+import React from 'react';
+import Confetti from "react-confetti";
 import { Button, Text, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import "./Home.css";
 
 const ThankYou = () => {
   return (
     <div className="Page">
+      <Confetti />
       <div className="ContentBox">
         <Flex direction="column" justify="center" gap="2vh" h="100vh">
           <Text>Thank you for registering for eHacks 2024!</Text>

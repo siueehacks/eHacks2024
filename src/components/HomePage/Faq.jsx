@@ -101,6 +101,11 @@ const Faq = () => {
             We do not put a restriction on team size, but we give out prizes in sets of four.
             If you want, you can also work by yourself.
           </FaqItem>
+          <FaqItem question="What should I take away from this experience?">
+            Attending eHacks will enhance your collaborative problem-solving skills through real-
+            world projects. Simultaneously, you will build connections with recruiters and peers from
+            various fields, building your network and opportunities for your future.
+        </FaqItem>
         </Accordion>
       </Box>
     </Box>
