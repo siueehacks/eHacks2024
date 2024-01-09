@@ -5,19 +5,15 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage, db } from "../firebaseConfig.js";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import { getRegistrationCount } from "../data/firestoreOps.js";
+import { changeCountBy, getRegistrationCount } from "../data/firestoreOps.js";
 import { CAPACITY, DEADLINE } from "../config.js";
 import Waves from "../components/Waves.jsx"
 
-const Register = () => {
+const RegistrationForm = () => {
   const [file, setFile] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [guardianFirstName, setGuardianFirstName] = useState("");
-  const [guardianLastName, setGuardianLastName] = useState("");
-  const [guardianEmail, setGuardianEmail] = useState("");
-  const [guardianPhone, setGuardianPhone] = useState("");
   const [allergies, setAllergies] = useState("");
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
@@ -53,19 +49,16 @@ const Register = () => {
     if (
       firstName === "" ||
       lastName === "" ||
-      email === "" ||
-      guardianFirstName === "" ||
-      guardianLastName === "" ||
-      guardianPhone === ""
+      email === ""
     ) {
       setMessage("Please fill out all required fields.");
       return;
     }
-    let waiverName = "";
+    let resumeName = "";
     if (file === "") {
-      waiverName = "No Waiver";
+      resumeName = "No Resume";
     } else {
-      waiverName = `${lastName}${firstName}Waiver_${date}.${file.name
+      resumeName = `${lastName}${firstName}Resume_${date}.${file.name
         .split(".")
         .pop()}`;
     }
@@ -75,25 +68,22 @@ const Register = () => {
       lastName: lastName,
       email: email,
       allergies: allergies,
-      guardianFirstName: guardianFirstName,
-      guardianLastName: guardianLastName,
-      guardianEmail: guardianEmail,
-      guardianPhone: guardianPhone,
       submissionTime: date.toLocaleString(),
-      waiver: waiverName,
+      resume: resumeName,
     };
 
     try {
       const docRef = await addDoc(collection(db, "registrations"), formData);
+      changeCountBy(1);
       console.log("Document written with ID: ", docRef.id);
       if (file !== "") {
-        const waiverRef = ref(
+        const resumeRef = ref(
           storage,
-          `/waivers/${lastName}${firstName}Waiver_${date}.${file.name
+          `/resumes/${lastName}${firstName}Resume_${date}.${file.name
             .split(".")
             .pop()}`
         );
-        uploadBytesResumable(waiverRef, file);
+        uploadBytesResumable(resumeRef, file);
       }
     } catch (e) {
       console.error(e);
@@ -111,8 +101,6 @@ const Register = () => {
   }
 
   return (
-    <div className="Page">
-      <Waves />
       <div className="ContentBox">
         <Center minH="100vh">
           <Flex
@@ -151,6 +139,8 @@ const Register = () => {
                       required
                     />
                   </Flex>
+                </Flex>
+                <Flex gap="2vw" direction="column" textAlign="left">
                   <Flex align="center" textAlign="left" h="25%">
                     <label htmlFor="email">Email: </label>
                     <Input
@@ -174,67 +164,14 @@ const Register = () => {
                     />
                   </Flex>
                 </Flex>
-                <Flex gap="2vw" direction="column" textAlign="left">
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianFirstName">
-                      Guardian First Name:{" "}
-                    </label>
-                    <Input
-                      type="text"
-                      id="guardianFirstName"
-                      value={guardianFirstName}
-                      onChange={(e) => setGuardianFirstName(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianLastName">
-                      Guardian Last Name:{" "}
-                    </label>
-                    <Input
-                      type="text"
-                      id="guardianLastName"
-                      value={guardianLastName}
-                      onChange={(e) => setGuardianLastName(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianEmail">Guardian Email: </label>
-                    <Input
-                      type="email"
-                      id="guardianEmail"
-                      value={guardianEmail}
-                      onChange={(e) => setGuardianEmail(e.target.value)}
-                      className="TextField"
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianPhone">Guardian Phone: </label>
-                    <Input
-                      type="text"
-                      id="guardianPhone"
-                      value={guardianPhone}
-                      onChange={(e) => setGuardianPhone(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                </Flex>
               </Flex>
               <Text maxW="100vh">
-                The following waiver is REQUIRED to participate. Download and
-                either submit a signed copy of the waiver (Photo or PDF) with
-                this form or bring a printed, signed copy to the event.
+                Upload your resume below for employers attending the event.
+                It is not required but strongly recommended.
               </Text>
-              <Button m="1vh" variant="outline" onClick={downloadWaiverForm}>
-                Download Waiver
-              </Button>
               <br />
               <label style={{ marginRight: "auto" }} htmlFor="lastName">
-                Upload Signed Waiver
+                Upload Resume
               </label>
               <Input
                 style={{ marginRight: "auto" }}
@@ -255,8 +192,16 @@ const Register = () => {
           </Flex>
         </Center>
       </div>
-    </div>
   );
 };
+
+const Register = () => {
+  return (
+    <div className="Page">
+      <Waves static="true"/>
+      <RegistrationForm />
+    </div>
+  );
+}
 
 export default Register;

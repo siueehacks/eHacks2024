@@ -18,6 +18,7 @@ import ConfirmDeleteModal from "../components/ConfirmDeleteModal.jsx";
 import { useNavigate } from "react-router-dom";
 import Waves from "../components/Waves.jsx";
 import "./Home.css";
+import { changeCountBy } from "../data/firestoreOps.js";
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
@@ -29,10 +30,6 @@ const Dashboard = () => {
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
-    guardianFirstName: "Guardian First Name",
-    guardianLastName: "Guardian Last Name",
-    guardianEmail: "Guardian Email",
-    guardianPhone: "Guardian Phone",
     allergies: "Allergies",
   };
 
@@ -72,6 +69,7 @@ const Dashboard = () => {
   async function deleteEntry(doc) {
     try {
       await deleteDoc(doc.ref);
+      changeCountBy(-1);
       loadData();
     } catch (e) {
       console.error(e);
@@ -79,9 +77,9 @@ const Dashboard = () => {
     }
   }
 
-  async function downloadWaiver(waiver, mode) {
+  async function downloadResume(resume, mode) {
     try {
-      const storageRef = ref(storage, `waivers/${waiver}`);
+      const storageRef = ref(storage, `resumes/${resume}`);
       //if (mode === 0){
       const url = await getDownloadURL(storageRef);
       window.open(url);
@@ -120,7 +118,7 @@ const Dashboard = () => {
     return (
       <Tr>
         <Th />
-        <Th color="white">Waiver</Th>
+        <Th color="white">Resume</Th>
         {Object.values(properties).map((property) => (
           <Th color="white" fontSize="xs">
             {property}
@@ -150,11 +148,11 @@ const Dashboard = () => {
             variant="outline"
             _hover={{ bg: '#969696' }}
             size="xs"
-            onClick={() => downloadWaiver(doc.waiver, 0)}
+            onClick={() => downloadResume(doc.resume, 0)}
           >
             Open
           </Button>
-          {/*<div onClick={() => downloadWaiver(props.doc.waiver, 1)}>Download</div>*/}
+          {/*<div onClick={() => downloadResume(props.doc.waiver, 1)}>Download</div>*/}
         </Td>
         {displayProperties(doc)}
 
