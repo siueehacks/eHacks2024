@@ -29,8 +29,7 @@ const About = () => {
           return from pre-pandemic. It is a 36-hour, weekend long event where participants come
           together to create innovative projects. eHacks provides a great opportunity for students
           to learn new skills, network with other students, and have fun! This year, eHacks will
-          take place March 3-5. It will be a fully in person event that will take place at the
-          T-Rex innovation center in St. Louis, MO.
+          take place March 1-3 and will be a fully in person event.
         </Text>
         <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
           <Image src={darla1} objectFit='cover' alt="Organizers & Students"/>

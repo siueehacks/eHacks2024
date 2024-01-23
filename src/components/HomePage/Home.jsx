@@ -68,7 +68,7 @@ const Home = () => {
       mt="75px"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <a href="https://ehacks.cs.siue.edu/" rel="external">
+        {/* <a href="https://ehacks.cs.siue.edu/" rel="external">
         <Image
             src={sponsorLogo}
             alt="Presenting Sponsor"
@@ -79,7 +79,7 @@ const Home = () => {
         </a>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace" as="i">
           presents
-        </Text>
+        </Text> */}
         <Image 
           src={logo}
           alt="eHacks Logo"
@@ -88,7 +88,7 @@ const Home = () => {
           mb="2vmin"
         />
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          March 2nd, 2024
+          March 1st-3rd, 2024
         </Text>
         <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
           Southern Illinois University Edwardsville
