@@ -13,6 +13,7 @@ import Register from './pages/Register';
 import LoginPage from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ThankYou from './pages/ThankYou';
+import BeSponsor from './pages/BeSponsor';
 import './fonts.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,6 +27,7 @@ root.render(
           <Route path="/thankyou" element={<ThankYou/>} />
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/be-a-sponsor" element={<BeSponsor/>} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
