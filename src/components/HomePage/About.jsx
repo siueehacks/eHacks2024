@@ -1,8 +1,8 @@
 import { Text, Box, Flex, Image } from "@chakra-ui/react";
-import darla1 from "../../assets/press/SheCode-Darla.jpg";
 import darla2 from "../../assets/press/SheCode-Darla2.jpg";
-import dennis from "../../assets/press/SheCode-Dennis.jpg";
 import participants from "../../assets/press/SheCode-Participants.jpg";
+import careerPrepTalk from "../../assets/press/career-prep.jpg";
+import gitHubActionTalk from "../../assets/press/github-actions.jpg";
 
 const About = () => {
   return (
@@ -32,9 +32,9 @@ const About = () => {
           take place March 1-3 and will be a fully in person event.
         </Text>
         <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
-          <Image src={darla1} objectFit='cover' alt="Organizers & Students"/>
-          <Image src={dennis} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={careerPrepTalk} objectFit='cover' alt="Tech Talk on Career Prep"/>
           <Image src={participants} objectFit='cover' alt="Organizers & Students"/>
+          <Image src={gitHubActionTalk} objectFit='cover' alt="Tech Talk on GitHub Actions"/>
           <Image src={darla2} objectFit='cover' alt="Organizers & Students"/>
         </Flex>
       </Box>
