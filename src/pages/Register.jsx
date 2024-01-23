@@ -1,4 +1,4 @@
-import { Flex, Button, Text, Center, Input } from "@chakra-ui/react";
+import { Flex, Button, Text, Center, Input, RadioGroup, Stack, Radio, Box } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytesResumable } from "firebase/storage";
@@ -15,6 +15,7 @@ const RegistrationForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [allergies, setAllergies] = useState("");
+  const [shirtSize, setShirtSize] = useState("medium")
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ const RegistrationForm = () => {
       lastName: lastName,
       email: email,
       allergies: allergies,
+      shirtSize: shirtSize,
       submissionTime: date.toLocaleString(),
       resume: resumeName,
     };
@@ -92,14 +94,6 @@ const RegistrationForm = () => {
     navigate("/thankyou");
   }
 
-  function downloadWaiverForm() {
-    const link = document.createElement("a");
-    link.href = "/SheCode2023Forms.pdf";
-    link.setAttribute("download", "SheCode2023Waiver.pdf");
-    document.body.appendChild(link);
-    link.click();
-  }
-
   return (
       <div className="ContentBox">
         <Center minH="100vh">
@@ -115,7 +109,7 @@ const RegistrationForm = () => {
               eHacks 2024 Registration
             </Text>
             <form onSubmit={handleSubmit}>
-              <Flex w="100%" gap="2vw" wrap="wrap" mb="4vh">
+              <Flex w="100%" gap="2vw" wrap="wrap" mb="2vh">
                 <Flex gap="2vw" direction="column" maxW="100%">
                   <Flex align="center" textAlign="left" h="25%">
                     <label htmlFor="firstName">First Name: </label>
@@ -165,6 +159,16 @@ const RegistrationForm = () => {
                   </Flex>
                 </Flex>
               </Flex>
+              <Box mb="2vh">
+                <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
+                  <Stack direction='row'>
+                    <label htmlFor="shirtSize">Select Your Shirt Size:</label>
+                    <Radio value='small'>Small</Radio>
+                    <Radio value='medium'>Medium</Radio>
+                    <Radio value='large'>Large</Radio>
+                  </Stack>
+                </RadioGroup>
+              </Box>
               <Text maxW="100vh">
                 Upload your resume below for employers attending the event.
                 It is not required but strongly recommended.

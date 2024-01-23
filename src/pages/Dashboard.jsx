@@ -30,6 +30,7 @@ const Dashboard = () => {
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
+    shirtSize: "Shirt Size",
     allergies: "Allergies",
   };
 
