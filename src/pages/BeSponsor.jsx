@@ -35,14 +35,14 @@ const BeSponsor = () => {
             <Box w="10%"></Box>
             </Flex>
             <TableContainer>
-                <Table variant='unstyled'>
+                <Table variant='simple'>
                     <Thead>
                         <Tr>
-                            <Th>Perk</Th>
-                            <Th>Platinum Tier ($3500)</Th>
-                            <Th>Gold Tier ($2500)</Th>
-                            <Th>Silver Tier ($1000)</Th>
-                            <Th>Meal ($500/$250)</Th>
+                            <Th textColor="white">Perk</Th>
+                            <Th textColor="white">Platinum Tier ($3500)</Th>
+                            <Th textColor="white">Gold Tier ($2500)</Th>
+                            <Th textColor="white">Silver Tier ($1000)</Th>
+                            <Th textColor="white">Meal ($500/$250)</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
