@@ -170,7 +170,7 @@ const RegistrationForm = () => {
                 </RadioGroup>
               </Box>
               <Text maxW="100vh">
-                Upload your resume below for employers attending the event.
+                Upload your resume below for employers at eHacks career fair.
                 It is not required but strongly recommended.
               </Text>
               <br />
