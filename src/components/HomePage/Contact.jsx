@@ -37,6 +37,7 @@ const Contact = () => {
             fontSize="3xl"
             fontFamily="monospace"
             padding="25px"
+            paddingBottom="0"
           >
             Event Organizers:
         </Text>
@@ -73,11 +74,23 @@ const Contact = () => {
             </Flex>
           ))}
         </Flex>
+        <Text
+            mt="-5px"
+            ml="5vmin"
+            mr="5vmin"
+            fontSize="3xl"
+            fontFamily="monospace"
+            padding="25px"
+            paddingBottom="0"
+          >
+            Not Pictured:
+        </Text>
         <Box>
           <ul style={{ fontFamily: "monospace", fontSize: "1.4rem" }}>
             <li>Scott DeLozier</li>
             <li>Joseph Haenel</li>
             <li>Zakery Hickey</li>
+            <li>Jacob Hendricks</li>
           </ul>
         </Box>
       </Box>
