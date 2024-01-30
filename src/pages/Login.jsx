@@ -32,7 +32,7 @@ const Login = () => {
 
   useEffect(() => {
     checkSignedIn()
-  }, []);
+  }, [checkSignedIn]);
 
   async function handleLogin() {
       await setPersistence(auth, browserSessionPersistence)
