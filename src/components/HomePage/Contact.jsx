@@ -6,34 +6,47 @@ import { FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
   return (
-    <Box
-      mb="80vh"
-      justifyContent="top"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Text fontSize="6xl" fontFamily="monospace">
-          Contact Us!
-        </Text>
-        <Text
-          mt="-5px"
-          mb="3vh"
-          ml="5vmin"
-          mr="5vmin"
-          fontSize="xl"
-          fontFamily="monospace"
-        >
-          <a href="mailto:siue.ehacks@gmail.com">siue.ehacks@gmail.com</a>
-        </Text>
+    <Box>
+      <Box
+        mb="100vh"
+        justifyContent="top"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <Text fontSize="6xl" fontFamily="monospace">
+            Contact Us!
+          </Text>
+          <Text
+            mt="-5px"
+            mb="3vh"
+            ml="5vmin"
+            mr="5vmin"
+            fontSize="xl"
+            fontFamily="monospace"
+          >
+            <a href="mailto:siue.ehacks@gmail.com">siue.ehacks@gmail.com</a>
+          </Text>
+        </Box>
 
+        <Text
+            mt="-5px"
+            ml="5vmin"
+            mr="5vmin"
+            fontSize="3xl"
+            fontFamily="monospace"
+            padding="25px"
+          >
+            Event Organizers:
+        </Text>
         <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
           {creators.map((creator) => (
-            <Box
+            <Flex
               key={creator.id}
+              direction="column"
+              align="center"
               textAlign="center"
-              width={{ base: "100%", md: "calc(50% - 1vw)" }}
               mb={{ base: "4", md: "0" }}
             >
               <Image
@@ -57,28 +70,16 @@ const Contact = () => {
               <Text fontSize="lg" fontFamily="monospace">
                 {creator.role}
               </Text>
-            </Box>
+            </Flex>
           ))}
         </Flex>
-
-      </Box>
-      <Text
-          mt="-5px"
-          mb="3vh"
-          ml="5vmin"
-          mr="5vmin"
-          fontSize="3xl"
-          fontFamily="monospace"
-          padding="25px"
-        >
-          Event Organizers:
-      </Text>
-      <Box>
-        <ul style={{ fontFamily: "monospace", fontSize: "1.4rem" }}>
-          <li>Scott DeLozier</li>
-          <li>Joseph Haenel</li>
-          <li>Zakery Hickey</li>
-        </ul>
+        <Box>
+          <ul style={{ fontFamily: "monospace", fontSize: "1.4rem" }}>
+            <li>Scott DeLozier</li>
+            <li>Joseph Haenel</li>
+            <li>Zakery Hickey</li>
+          </ul>
+        </Box>
       </Box>
     </Box>
   );
