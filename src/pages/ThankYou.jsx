@@ -1,16 +1,17 @@
-import { Button, Text, Flex } from "@chakra-ui/react";
+import React from 'react';
+import Confetti from "react-confetti";
+import { Button, Text, Flex, Link as ChakraLink } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import "./Home.css";
 
 const ThankYou = () => {
   return (
     <div className="Page">
+      <Confetti />
       <div className="ContentBox">
         <Flex direction="column" justify="center" gap="2vh" h="100vh">
-          <Text>Thank you for registering for SheCode 2023!</Text>
-          <Text>Your registration is accepted, conditional on a valid waiver.</Text>
-          <Text>If you did not submit a waiver, you must bring a signed copy in person to the event.</Text>
+          <Text>Thank you for registering for eHacks 2024!</Text>
           <Text>We will be in touch if there are issues with your registration info!</Text>
+          <Text>If you have any questions check out our <ChakraLink href="/#faq" textDecoration="underline">FAQ</ChakraLink> or reach out at <ChakraLink href="mailto:siue.ehacks@gmail.com">siue.ehacks@gmail.com</ChakraLink></Text>
           <Link to="/">
             <Button variant="outline">Return to Homepage</Button>
           </Link>

@@ -1,23 +1,21 @@
-import { Flex, Button, Text, Center, Input } from "@chakra-ui/react";
+import { Flex, Button, Text, Center, Input, RadioGroup, Stack, Radio, Box } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage, db } from "../firebaseConfig.js";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import { getRegistrationCount } from "../data/firestoreOps.js";
+import { changeCountBy, getRegistrationCount } from "../data/firestoreOps.js";
 import { CAPACITY, DEADLINE } from "../config.js";
+import Waves from "../components/Waves.jsx"
 
-const Register = () => {
+const RegistrationForm = () => {
   const [file, setFile] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [guardianFirstName, setGuardianFirstName] = useState("");
-  const [guardianLastName, setGuardianLastName] = useState("");
-  const [guardianEmail, setGuardianEmail] = useState("");
-  const [guardianPhone, setGuardianPhone] = useState("");
   const [allergies, setAllergies] = useState("");
+  const [shirtSize, setShirtSize] = useState("medium")
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
@@ -53,18 +51,16 @@ const Register = () => {
       firstName === "" ||
       lastName === "" ||
       email === "" ||
-      guardianFirstName === "" ||
-      guardianLastName === "" ||
-      guardianPhone === ""
+      file === ""
     ) {
-      setMessage("Please fill out all required fields.");
+      setMessage("Please fill out all required fields marked with *");
       return;
     }
-    let waiverName = "";
+    let resumeName = "";
     if (file === "") {
-      waiverName = "No Waiver";
+      resumeName = "No Resume";
     } else {
-      waiverName = `${lastName}${firstName}Waiver_${date}.${file.name
+      resumeName = `${lastName}${firstName}Resume_${date}.${file.name
         .split(".")
         .pop()}`;
     }
@@ -74,25 +70,23 @@ const Register = () => {
       lastName: lastName,
       email: email,
       allergies: allergies,
-      guardianFirstName: guardianFirstName,
-      guardianLastName: guardianLastName,
-      guardianEmail: guardianEmail,
-      guardianPhone: guardianPhone,
+      shirtSize: shirtSize,
       submissionTime: date.toLocaleString(),
-      waiver: waiverName,
+      resume: resumeName,
     };
 
     try {
       const docRef = await addDoc(collection(db, "registrations"), formData);
+      changeCountBy(1);
       console.log("Document written with ID: ", docRef.id);
       if (file !== "") {
-        const waiverRef = ref(
+        const resumeRef = ref(
           storage,
-          `/waivers/${lastName}${firstName}Waiver_${date}.${file.name
+          `/resumes/${lastName}${firstName}Resume_${date}.${file.name
             .split(".")
             .pop()}`
         );
-        uploadBytesResumable(waiverRef, file);
+        uploadBytesResumable(resumeRef, file);
       }
     } catch (e) {
       console.error(e);
@@ -101,16 +95,7 @@ const Register = () => {
     navigate("/thankyou");
   }
 
-  function downloadWaiverForm() {
-    const link = document.createElement("a");
-    link.href = "/SheCode2023Forms.pdf";
-    link.setAttribute("download", "SheCode2023Waiver.pdf");
-    document.body.appendChild(link);
-    link.click();
-  }
-
   return (
-    <div className="Page">
       <div className="ContentBox">
         <Center minH="100vh">
           <Flex
@@ -122,13 +107,13 @@ const Register = () => {
             h="100%"
           >
             <Text fontSize="4xl" mb="2vw">
-              SheCode 2023 Registration
+              eHacks 2024 Registration
             </Text>
             <form onSubmit={handleSubmit}>
-              <Flex w="100%" gap="2vw" wrap="wrap" mb="4vh">
+              <Flex w="100%" gap="2vw" wrap="wrap" mb="2vh">
                 <Flex gap="2vw" direction="column" maxW="100%">
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="firstName">First Name: </label>
+                    <label htmlFor="firstName">First Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="firstName"
@@ -139,7 +124,7 @@ const Register = () => {
                     />
                   </Flex>
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="lastName">Last Name: </label>
+                    <label htmlFor="lastName">Last Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="lastName"
@@ -149,8 +134,10 @@ const Register = () => {
                       required
                     />
                   </Flex>
+                </Flex>
+                <Flex gap="2vw" direction="column" textAlign="left">
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="email">Email: </label>
+                    <label htmlFor="email">Email: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="email"
                       id="email"
@@ -172,67 +159,25 @@ const Register = () => {
                     />
                   </Flex>
                 </Flex>
-                <Flex gap="2vw" direction="column" textAlign="left">
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianFirstName">
-                      Guardian First Name:{" "}
-                    </label>
-                    <Input
-                      type="text"
-                      id="guardianFirstName"
-                      value={guardianFirstName}
-                      onChange={(e) => setGuardianFirstName(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianLastName">
-                      Guardian Last Name:{" "}
-                    </label>
-                    <Input
-                      type="text"
-                      id="guardianLastName"
-                      value={guardianLastName}
-                      onChange={(e) => setGuardianLastName(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianEmail">Guardian Email: </label>
-                    <Input
-                      type="email"
-                      id="guardianEmail"
-                      value={guardianEmail}
-                      onChange={(e) => setGuardianEmail(e.target.value)}
-                      className="TextField"
-                    />
-                  </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="guardianPhone">Guardian Phone: </label>
-                    <Input
-                      type="text"
-                      id="guardianPhone"
-                      value={guardianPhone}
-                      onChange={(e) => setGuardianPhone(e.target.value)}
-                      className="TextField"
-                      required
-                    />
-                  </Flex>
-                </Flex>
               </Flex>
+              <Box mb="2vh">
+                <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
+                  <Stack direction='row'>
+                    <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: </label>
+                    <Radio value='small'>Small</Radio>
+                    <Radio value='medium'>Medium</Radio>
+                    <Radio value='large'>Large</Radio>
+                  </Stack>
+                </RadioGroup>
+              </Box>
               <Text maxW="100vh">
-                The following waiver is REQUIRED to participate. Download and
-                either submit a signed copy of the waiver (Photo or PDF) with
-                this form or bring a printed, signed copy to the event.
+                Upload your resume below for employers at eHacks career fair.
+                It is required to attend the event.
               </Text>
-              <Button m="1vh" variant="outline" onClick={downloadWaiverForm}>
-                Download Waiver
-              </Button>
               <br />
               <label style={{ marginRight: "auto" }} htmlFor="lastName">
-                Upload Signed Waiver
+                Upload Resume
+                <Text color="red">{(message !== "") ? "Required!" : ""}</Text>
               </label>
               <Input
                 style={{ marginRight: "auto" }}
@@ -253,8 +198,16 @@ const Register = () => {
           </Flex>
         </Center>
       </div>
-    </div>
   );
 };
+
+const Register = () => {
+  return (
+    <div className="Page">
+      <Waves static="true"/>
+      <RegistrationForm />
+    </div>
+  );
+}
 
 export default Register;

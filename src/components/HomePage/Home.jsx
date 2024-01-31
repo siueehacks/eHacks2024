@@ -1,4 +1,4 @@
-import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
+import { Text, Button, Box, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/eHacksLogo.png";
@@ -65,28 +65,30 @@ const Home = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
+      mt="75px"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        <a href="https://ehacks.cs.siue.edu/" rel="external">
+        {/* <a href="https://ehacks.cs.siue.edu/" rel="external">
         <Image
             src={sponsorLogo}
             alt="Presenting Sponsor"
             maxW="20vmax"
             maxH="13vh"
-            mt="8vmin"
+            mt="0"
           />
         </a>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace" as="i">
           presents
-        </Text>
+        </Text> */}
         <Image 
           src={logo}
           alt="eHacks Logo"
-          maxW="80%"
+          width="35vw"
+          maxW="253px"
           mb="2vmin"
         />
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          April 22, 2023
+          March 1st-3rd, 2024
         </Text>
         <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
           Southern Illinois University Edwardsville
@@ -95,20 +97,18 @@ const Home = () => {
         </Text>
       </Box>
       <RegisterButton/>
-      <Box>
-        <Text
-          mt="10px"
-          mb="3vh"
-          maxW="70vw"
-          fontSize="xl"
-          fontFamily="monospace"
-        >
-          <Text as={DEADLINE > new Date() ? "" : "s"}>
-            Registration Deadline: {DEADLINE.toLocaleString()}
-          </Text>
-          <Text as={capacityMet ? "s" : ""}>
-            Max Capacity: {CAPACITY} Participants
-          </Text>
+      <Box
+        mt="10px"
+        mb="3vh"
+        maxW="70vw"
+        fontSize="xl"
+        fontFamily="monospace"
+      >
+        <Text as={DEADLINE > new Date() ? "" : "s"}>
+          Registration Deadline: {DEADLINE.toLocaleString()}
+        </Text>
+        <Text as={capacityMet ? "s" : ""}>
+          Max Capacity: {CAPACITY} Participants
         </Text>
       </Box>
       <SocialLinks />

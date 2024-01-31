@@ -4,14 +4,16 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // Initialize Firebase
-const app = initializeApp ({
-  apiKey: "AIzaSyDlMgc4M17jF-PB8sDbR9r_Wlvt6AuDWyo",
-  authDomain: "ehacks2024-development.firebaseapp.com",
-  projectId: "ehacks2024-development",
-  storageBucket: "ehacks2024-development.appspot.com",
-  messagingSenderId: "931961028127",
-  appId: "1:931961028127:web:40aef58ae25f88a85d9f2a"
-});
+const firebaseConfig = {
+  apiKey: "AIzaSyBO3tslMVos5DmsZ7azY2MddWYKNh-bnWU",
+  authDomain: "ehacks2024.firebaseapp.com",
+  projectId: "ehacks2024",
+  storageBucket: "ehacks2024.appspot.com",
+  messagingSenderId: "468899942185",
+  appId: "1:468899942185:web:97ed56bdd1d4b3691a7138"
+};
+
+const app = initializeApp (firebaseConfig);
 
 // Firebase storage reference
 export const storage = getStorage(app);

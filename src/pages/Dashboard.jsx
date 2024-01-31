@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../firebaseConfig.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { storage, db, auth } from "../firebaseConfig.js";
 import {
   Flex,
   Center,
@@ -15,7 +16,9 @@ import {
 } from "@chakra-ui/react";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal.jsx";
 import { useNavigate } from "react-router-dom";
+import Waves from "../components/Waves.jsx";
 import "./Home.css";
+import { changeCountBy } from "../data/firestoreOps.js";
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
@@ -27,16 +30,30 @@ const Dashboard = () => {
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
-    guardianFirstName: "Guardian First Name",
-    guardianLastName: "Guardian Last Name",
-    guardianEmail: "Guardian Email",
-    guardianPhone: "Guardian Phone",
+    shirtSize: "Shirt Size",
     allergies: "Allergies",
   };
 
   useEffect(() => {
+    checkSignedIn();
     loadData();
   }, []);
+
+  function checkSignedIn() {
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/login");
+      }
+    })
+  }
+
+  function logout() {
+    auth.signOut().then(() => {
+      navigate("/login");
+    }).catch((e) => {
+      console.error('Sign out error');
+    });
+  }
 
   async function loadData() {
     try {
@@ -53,6 +70,7 @@ const Dashboard = () => {
   async function deleteEntry(doc) {
     try {
       await deleteDoc(doc.ref);
+      changeCountBy(-1);
       loadData();
     } catch (e) {
       console.error(e);
@@ -60,9 +78,9 @@ const Dashboard = () => {
     }
   }
 
-  async function downloadWaiver(waiver, mode) {
+  async function downloadResume(resume, mode) {
     try {
-      const storageRef = ref(storage, `waivers/${waiver}`);
+      const storageRef = ref(storage, `resumes/${resume}`);
       //if (mode === 0){
       const url = await getDownloadURL(storageRef);
       window.open(url);
@@ -93,7 +111,7 @@ const Dashboard = () => {
     const blob = new Blob([csvString], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "SheCodeRegistrations.csv";
+    a.download = "eHacksRegistrations.csv";
     a.click();
   }
 
@@ -101,7 +119,7 @@ const Dashboard = () => {
     return (
       <Tr>
         <Th />
-        <Th color="white">Waiver</Th>
+        <Th color="white">Resume</Th>
         {Object.values(properties).map((property) => (
           <Th color="white" fontSize="xs">
             {property}
@@ -122,19 +140,20 @@ const Dashboard = () => {
     return (
       <Tr>
         <Td>
-          <Button variant="outline" size="xs" onClick={() => setModal(true)}>
+          <Button variant="outline" colorScheme="red" size="xs" onClick={() => setModal(true)}>
             Delete
           </Button>
         </Td>
         <Td>
           <Button
             variant="outline"
+            _hover={{ bg: '#969696' }}
             size="xs"
-            onClick={() => downloadWaiver(doc.waiver, 0)}
+            onClick={() => downloadResume(doc.resume, 0)}
           >
             Open
           </Button>
-          {/*<div onClick={() => downloadWaiver(props.doc.waiver, 1)}>Download</div>*/}
+          {/*<div onClick={() => downloadResume(props.doc.waiver, 1)}>Download</div>*/}
         </Td>
         {displayProperties(doc)}
 
@@ -160,9 +179,13 @@ const Dashboard = () => {
 
   return (
     <div className="Page">
+      <Waves />
       <div className="ContentBox">
         <Flex justify="left" ml="2vw">
-          <Button mt="2vh" variant="outline" onClick={downloadCSV}>
+          <Button mt="2vh" mr="1vw" _hover={{ bg: '#969696' }} variant="outline" onClick={logout}>
+            Logout
+          </Button>
+          <Button mt="2vh" _hover={{ bg: '#969696' }} variant="outline" onClick={downloadCSV}>
             Download CSV
           </Button>
         </Flex>
