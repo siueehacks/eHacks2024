@@ -71,6 +71,9 @@ const Sponsors = () => {
         <Text fontSize="6xl" fontFamily="monospace">
           Sponsors
         </Text>
+        <Text fontSize="xl" fontFamily="monospace" mb="4vh">
+          TBA
+        </Text>
         <Text fontSize="4xl" fontFamily="monospace">Want to sponsor eHacks? Check out our <ChakraLink as={ReactRouterLink} to="/be-a-sponsor" textDecoration={"underline"}>Be a Sponsor page</ChakraLink>!</Text>
         {/* <SponsorTier name="Platinum" color={tierColor.platinum}>
           <Sponsor

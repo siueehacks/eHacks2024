@@ -50,9 +50,10 @@ const RegistrationForm = () => {
     if (
       firstName === "" ||
       lastName === "" ||
-      email === ""
+      email === "" ||
+      file === ""
     ) {
-      setMessage("Please fill out all required fields.");
+      setMessage("Please fill out all required fields marked with *");
       return;
     }
     let resumeName = "";
@@ -112,7 +113,7 @@ const RegistrationForm = () => {
               <Flex w="100%" gap="2vw" wrap="wrap" mb="2vh">
                 <Flex gap="2vw" direction="column" maxW="100%">
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="firstName">First Name: </label>
+                    <label htmlFor="firstName">First Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="firstName"
@@ -123,7 +124,7 @@ const RegistrationForm = () => {
                     />
                   </Flex>
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="lastName">Last Name: </label>
+                    <label htmlFor="lastName">Last Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="lastName"
@@ -136,7 +137,7 @@ const RegistrationForm = () => {
                 </Flex>
                 <Flex gap="2vw" direction="column" textAlign="left">
                   <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="email">Email: </label>
+                    <label htmlFor="email">Email: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="email"
                       id="email"
@@ -162,7 +163,7 @@ const RegistrationForm = () => {
               <Box mb="2vh">
                 <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
                   <Stack direction='row'>
-                    <label htmlFor="shirtSize">Select Your Shirt Size:</label>
+                    <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: </label>
                     <Radio value='small'>Small</Radio>
                     <Radio value='medium'>Medium</Radio>
                     <Radio value='large'>Large</Radio>
@@ -171,11 +172,12 @@ const RegistrationForm = () => {
               </Box>
               <Text maxW="100vh">
                 Upload your resume below for employers at eHacks career fair.
-                It is not required but strongly recommended.
+                It is required to attend the event.
               </Text>
               <br />
               <label style={{ marginRight: "auto" }} htmlFor="lastName">
                 Upload Resume
+                <Text color="red">{(message !== "") ? "Required!" : ""}</Text>
               </label>
               <Input
                 style={{ marginRight: "auto" }}

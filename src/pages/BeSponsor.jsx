@@ -68,13 +68,6 @@ const BeSponsor = () => {
                             <Td><CloseIcon /></Td>
                         </Tr>
                         <Tr>
-                            <Td>Sponsor and Award Prize</Td>
-                            <Td><CheckIcon /></Td>
-                            <Td><CheckIcon /></Td>
-                            <Td><CheckIcon /></Td>
-                            <Td><CloseIcon /></Td>
-                        </Tr>
-                        <Tr>
                             <Td>Present a Tech Talk</Td>
                             <Td><CheckIcon /></Td>
                             <Td><CheckIcon /></Td>
