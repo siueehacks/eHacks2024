@@ -15,7 +15,9 @@ const RegistrationForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [allergies, setAllergies] = useState("");
-  const [shirtSize, setShirtSize] = useState("medium")
+  const [shirtSize, setShirtSize] = useState("");
+  const [school, setSchool] = useState("");
+  const [schoolYear, setSchoolYear] = useState("1");
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
@@ -51,9 +53,12 @@ const RegistrationForm = () => {
       firstName === "" ||
       lastName === "" ||
       email === "" ||
-      file === ""
+      file === "" ||
+      shirtSize === "" ||
+      school === "" ||
+      schoolYear === ""
     ) {
-      setMessage("Please fill out all required fields marked with *");
+      setMessage("Please fill out all required fields.");
       return;
     }
     let resumeName = "";
@@ -71,6 +76,8 @@ const RegistrationForm = () => {
       email: email,
       allergies: allergies,
       shirtSize: shirtSize,
+      school: school,
+      schoolYear: schoolYear,
       submissionTime: date.toLocaleString(),
       resume: resumeName,
     };
@@ -112,8 +119,8 @@ const RegistrationForm = () => {
             <form onSubmit={handleSubmit}>
               <Flex w="100%" gap="2vw" wrap="wrap" mb="2vh">
                 <Flex gap="2vw" direction="column" maxW="100%">
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="firstName">First Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
+                  <Flex align="center" textAlign="left" h="25%" mt="0.5vh" mb="0.5vh">
+                    <label htmlFor="firstName">First Name: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="firstName"
@@ -123,8 +130,8 @@ const RegistrationForm = () => {
                       required
                     />
                   </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="lastName">Last Name: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
+                  <Flex align="center" textAlign="left" h="25%" mt="0.5vh" mb="0.5vh">
+                    <label htmlFor="lastName">Last Name: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="text"
                       id="lastName"
@@ -136,8 +143,8 @@ const RegistrationForm = () => {
                   </Flex>
                 </Flex>
                 <Flex gap="2vw" direction="column" textAlign="left">
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="email">Email: <Text color="red">{(message !== "") ? "Required!" : ""}</Text></label>
+                  <Flex align="center" textAlign="left" h="25%" mt="0.5vh" mb="0.5vh">
+                    <label htmlFor="email">Email: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Input
                       type="email"
                       id="email"
@@ -147,8 +154,8 @@ const RegistrationForm = () => {
                       required
                     />
                   </Flex>
-                  <Flex align="center" textAlign="left" h="25%">
-                    <label htmlFor="allergies">Allergies: </label>
+                  <Flex align="center" textAlign="left" h="25%" mt="0.5vh" mb="0.5vh">
+                    <label htmlFor="allergies">Allergies / Dietary Restrictions: </label>
                     <Input
                       type="allergies"
                       id="allergies"
@@ -160,14 +167,39 @@ const RegistrationForm = () => {
                   </Flex>
                 </Flex>
               </Flex>
+              <Flex align="center" textAlign="left" h="25%">
+                <label htmlFor="school">University/Institution Name: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                <Input
+                  type="school"
+                  id="school"
+                  value={school}
+                  onChange={(e) => setSchool(e.target.value)}
+                  className="TextField"
+                  required
+                />
+              </Flex>
               <Box mb="2vh">
+                <RadioGroup onChange={setSchoolYear} value={schoolYear} name="schoolYear">
+                  <Flex align="center" justifyContent="space-between">
+                    <label htmlFor="schoolYear">Select your ranking: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                    <Stack display="inline" direction="row">
+                      <Radio value='freshman'>Freshman</Radio>
+                      <Radio value='sophomore'>Sophomore</Radio>
+                      <Radio value='junior'>Junior</Radio>
+                      <Radio value='senior'>Senior</Radio>
+                    </Stack>
+                  </Flex>
+                </RadioGroup>
+                <br/>
                 <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
-                  <Stack direction='row'>
-                    <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: </label>
-                    <Radio value='small'>Small</Radio>
-                    <Radio value='medium'>Medium</Radio>
-                    <Radio value='large'>Large</Radio>
-                  </Stack>
+                  <Flex align="center" justifyContent="space-between">
+                    <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                    <Stack direction='row'>
+                      <Radio value='small'>Small</Radio>
+                      <Radio value='medium'>Medium</Radio>
+                      <Radio value='large'>Large</Radio>
+                    </Stack>
+                  </Flex>
                 </RadioGroup>
               </Box>
               <Text maxW="100vh">

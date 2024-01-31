@@ -32,6 +32,8 @@ const Dashboard = () => {
     email: "Email",
     shirtSize: "Shirt Size",
     allergies: "Allergies",
+    school: "Institution",
+    schoolYear: "Year in School"
   };
 
   useEffect(() => {
