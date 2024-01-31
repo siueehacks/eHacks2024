@@ -21,8 +21,8 @@
 
 .NavButtonBar {
   z-index: 99 !important;
-  background-color: rgb(73, 18, 105);
-  box-shadow:  0 0px 6px 1px white, 0 4px 10px 4px #0ff, 0 -4px 2px -2px #0ff inset;
+  background-color: rgb(51, 51, 51);
+  box-shadow:  0 2px 4px 4px white, 0 -1px 2px -2px white inset;
   opacity: 0.9;
   justify-content: right;
   align-items: center;
@@ -49,7 +49,7 @@
   top: 8vh;
   left: 0;
   width: 100%;
-  background-color: rgb(73, 18, 105);
+  background-color: rgb(51, 51, 51);
   opacity: 0.97;
   display: flex;
   flex-direction: column;
@@ -59,5 +59,5 @@
   color: white;
   font-size: 4vmax;
   font-family: monospace;
-  box-shadow:  0 0px 6px 1px white, 0 4px 10px 4px #0ff, 0 -4px 2px -2px #0ff inset;
+  box-shadow:  0 2px 4px 4px white, 0 -1px 2px -2px white inset;
 }

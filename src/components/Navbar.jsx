@@ -18,7 +18,7 @@ export default function Navbar() {
       }
       {
         window.innerWidth < window.innerHeight &&
-        <div className="NavButtonBar">
+        <div className="NavButtonBar" style={{'background-color': getRandomRGBColor()}}>
           <button className="NavButton" onClick={() => setExpanded(!expanded)}>
             <img src="Burger.webp" alt="Menu"/>
           </button>
@@ -26,7 +26,7 @@ export default function Navbar() {
       }
       {
         window.innerWidth < window.innerHeight && expanded &&
-        <div className="NavBurger">
+        <div className="NavBurger" style={{'background-color': getRandomRGBColor()}}>
           {nav.components.map((anchor) => (
           <HashLink to={anchor.id} onClick={() => setExpanded(false)}>{anchor.name}</HashLink>
           ))}

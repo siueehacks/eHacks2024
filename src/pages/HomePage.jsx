@@ -27,7 +27,7 @@ const HomeFooter = () => {
       <Box>
       <Text>Website made with {'\u2764'} by eHacks volunteers and alumni.</Text>
       </Box>
-      <Box w="30%"></Box>
+      <Box w={{base:"0%", lg: "30%"}}></Box>
     </Flex>
   );
 }
