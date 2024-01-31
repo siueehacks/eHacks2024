@@ -1,6 +1,4 @@
 import { Text, Box, Flex, Image, Icon } from "@chakra-ui/react";
-import LogLug from "../../assets/press/LogLug.jpg";
-import Jared from "../../assets/press/Jared.jpg";
 import { creators } from "./Creators.js";
 import { FaLinkedin } from 'react-icons/fa';
 
@@ -51,9 +49,9 @@ const Contact = () => {
               mb={{ base: "4", md: "0" }}
             >
               <Image
-                src={creator.name === "Camden McKay" ? LogLug : Jared}
+                src={creator.image}
                 objectFit="cover"
-                alt={`Webmaster ${creator.name}`}
+                alt={`${creator.role} ${creator.name}`}
                 maxW="400px"
                 maxH="400px"
                 w="auto"
@@ -87,10 +85,10 @@ const Contact = () => {
         </Text>
         <Box>
           <ul style={{ fontFamily: "monospace", fontSize: "1.4rem" }}>
-            <li>Scott DeLozier</li>
+            <li>Simran Patel</li>
             <li>Joseph Haenel</li>
             <li>Zakery Hickey</li>
-            <li>Jacob Hendricks</li>
+            <li>Edward Prenzler</li>
           </ul>
         </Box>
       </Box>
