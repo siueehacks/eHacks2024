@@ -52,10 +52,10 @@ const Contact = () => {
                 src={creator.image}
                 objectFit="cover"
                 alt={`${creator.role} ${creator.name}`}
-                maxW="80vw"
-                maxH="80vw"
-                w="auto"
-                h="auto"
+                maxW="400px"
+                maxH="400px"
+                w="80vw"
+                h="80vw"
                 padding="50px"
               />
               <Flex justify="center" align="center">
