@@ -4,6 +4,14 @@ import JaredImage from "../../assets/press/Jared.jpg";
 
 export const creators = [
     {
+        id: 3,
+        name: 'Jared Christopher',
+        role: 'Webmaster',
+        linkedin: 'https://www.linkedin.com/in/jaredchristopher/',
+        image: JaredImage
+    },
+
+    {
         id: 1,
         name: 'Scott DeLozier',
         role: 'Director',
@@ -17,15 +25,8 @@ export const creators = [
         role: 'Webmaster',
         linkedin: 'https://www.linkedin.com/in/camden-mckay-a3140b251/',
         image: LogLugImage
-    },
-
-    {
-        id: 3,
-        name: 'Jared Christopher',
-        role: 'Webmaster',
-        linkedin: 'https://www.linkedin.com/in/jaredchristopher/',
-        image: JaredImage
     }
+
 
     //Simran Social Media, Cam, and Edward
     //Registration Coordinator 

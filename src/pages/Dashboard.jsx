@@ -33,7 +33,8 @@ const Dashboard = () => {
     shirtSize: "Shirt Size",
     allergies: "Allergies",
     school: "Institution",
-    schoolYear: "Year in School"
+    schoolYear: "Year in School",
+    needsTransport: "Riding Bus"
   };
 
   useEffect(() => {

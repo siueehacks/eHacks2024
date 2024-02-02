@@ -8,6 +8,7 @@ import "./Home.css";
 import { changeCountBy, getRegistrationCount } from "../data/firestoreOps.js";
 import { CAPACITY, DEADLINE } from "../config.js";
 import Waves from "../components/Waves.jsx"
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const RegistrationForm = () => {
   const [file, setFile] = useState("");
@@ -17,7 +18,8 @@ const RegistrationForm = () => {
   const [allergies, setAllergies] = useState("");
   const [shirtSize, setShirtSize] = useState("");
   const [school, setSchool] = useState("");
-  const [schoolYear, setSchoolYear] = useState("1");
+  const [schoolYear, setSchoolYear] = useState("");
+  const [needsTransport, setNeedsTransport] = useState("");
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
@@ -56,7 +58,8 @@ const RegistrationForm = () => {
       file === "" ||
       shirtSize === "" ||
       school === "" ||
-      schoolYear === ""
+      schoolYear === "" ||
+      needsTransport === ""
     ) {
       setMessage("Please fill out all required fields.");
       return;
@@ -80,6 +83,7 @@ const RegistrationForm = () => {
       schoolYear: schoolYear,
       submissionTime: date.toLocaleString(),
       resume: resumeName,
+      needsTransport, needsTransport
     };
 
     try {
@@ -191,6 +195,16 @@ const RegistrationForm = () => {
                   </Flex>
                 </RadioGroup>
                 <br/>
+                <RadioGroup onChange={setNeedsTransport} value={needsTransport} name="shirtSize">
+                  <Flex align="center" justifyContent="space-between">
+                    <label htmlFor="needsTransport">Riding bus (SIUE students only): <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                    <Stack direction='row'>
+                      <Radio value='yes'>Yes</Radio>
+                      <Radio value='no'>No</Radio>
+                    </Stack>
+                  </Flex>
+                </RadioGroup>
+                <br/>
                 <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
                   <Flex align="center" justifyContent="space-between">
                     <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
@@ -208,8 +222,7 @@ const RegistrationForm = () => {
               </Text>
               <br />
               <label style={{ marginRight: "auto" }} htmlFor="lastName">
-                Upload Resume
-                <Text color="red">{(message !== "") ? "Required!" : ""}</Text>
+                Upload Resume <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text>
               </label>
               <Input
                 style={{ marginRight: "auto" }}
