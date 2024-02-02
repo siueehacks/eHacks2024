@@ -49,7 +49,7 @@ const About = () => {
           <br />
           Photos:
         </Text>
-        <Flex wrap="wrap" justify="center" maxW="90%" gap="2vw">
+        <Flex wrap="wrap" justify="center" maxW="90vw" gap="2vw">
           <Image src={darla1} objectFit='cover' alt="Organizers & Students"/>
           <Image src={dennis} objectFit='cover' alt="Organizers & Students"/>
           <Image src={participants} objectFit='cover' alt="Organizers & Students"/>
