@@ -208,10 +208,12 @@ const RegistrationForm = () => {
                 <RadioGroup onChange={setShirtSize} value={shirtSize} name="shirtSize">
                   <Flex align="center" justifyContent="space-between">
                     <label htmlFor="shirtSize">Select Your (Free!) Shirt Size: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
-                    <Stack direction='row'>
+                    <Stack direction='row' wrap='wrap'>
                       <Radio value='small'>Small</Radio>
                       <Radio value='medium'>Medium</Radio>
                       <Radio value='large'>Large</Radio>
+                      <Radio value='xl'>XL</Radio>
+                      <Radio value='xxl'>XXL</Radio>
                     </Stack>
                   </Flex>
                 </RadioGroup>
