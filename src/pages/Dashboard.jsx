@@ -34,6 +34,7 @@ const Dashboard = () => {
     allergies: "Allergies",
     school: "Institution",
     schoolYear: "Year in School",
+    major: "Major",
     needsTransport: "Riding Bus"
   };
 

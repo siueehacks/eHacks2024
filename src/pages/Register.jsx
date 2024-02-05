@@ -19,6 +19,7 @@ const RegistrationForm = () => {
   const [shirtSize, setShirtSize] = useState("");
   const [school, setSchool] = useState("");
   const [schoolYear, setSchoolYear] = useState("");
+  const [major, setMajor] = useState("");
   const [needsTransport, setNeedsTransport] = useState("");
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
@@ -59,7 +60,8 @@ const RegistrationForm = () => {
       shirtSize === "" ||
       school === "" ||
       schoolYear === "" ||
-      needsTransport === ""
+      needsTransport === "" ||
+      major === ""
     ) {
       setMessage("Please fill out all required fields.");
       return;
@@ -83,7 +85,8 @@ const RegistrationForm = () => {
       schoolYear: schoolYear,
       submissionTime: date.toLocaleString(),
       resume: resumeName,
-      needsTransport, needsTransport
+      needsTransport, needsTransport,
+      major: major
     };
 
     try {
@@ -194,6 +197,17 @@ const RegistrationForm = () => {
                     </Stack>
                   </Flex>
                 </RadioGroup>
+                <Flex align="center" textAlign="left" h="25%">
+                <label htmlFor="major">Major: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                <Input
+                  type="major"
+                  id="major"
+                  value={school}
+                  onChange={(e) => setMajor(e.target.value)}
+                  className="TextField"
+                  required
+                />
+              </Flex>
                 <br/>
                 <RadioGroup onChange={setNeedsTransport} value={needsTransport} name="shirtSize">
                   <Flex align="center" justifyContent="space-between">
@@ -234,6 +248,13 @@ const RegistrationForm = () => {
                 onChange={handleChange}
               />
             </form>
+            <Text>
+              By registering, you are agreeing to the following:<br/>
+              <br/>
+              I acknowledge that professional photographs taken of participants during eHacks may be included in eHacks publications, news releases, articles, or any other eHacks communications and/or websites.<br/>
+              <br/>
+              I hereby indemnify and hold eHacks, its organizers, and agents of the facility utilized for the eHacks event harmless from all liability (including attorneys’ fees) or injury (including death).
+            </Text>
             <Button
               colorScheme="Black"
               variant="outline"
