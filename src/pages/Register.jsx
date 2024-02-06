@@ -202,7 +202,7 @@ const RegistrationForm = () => {
                 <Input
                   type="major"
                   id="major"
-                  value={school}
+                  value={major}
                   onChange={(e) => setMajor(e.target.value)}
                   className="TextField"
                   required

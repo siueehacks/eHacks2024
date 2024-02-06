@@ -91,9 +91,10 @@ const Home = () => {
           March 1st-3rd, 2024
         </Text>
         <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
-          Southern Illinois University Edwardsville
-          <br />
-          Edwardsville, IL
+          @ T-Rex Innovation Center, St. Louis, MO
+        </Text>
+        <Text mt="-22px" mb="3vh" fontSize="xl" fontFamily="monospace">
+          Hosted by Southern Illinois University Edwardsville
         </Text>
       </Box>
       <RegisterButton/>

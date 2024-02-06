@@ -5,9 +5,9 @@ import Nineteen04Labs from "../../assets/press/SheCode-Dennis.jpg";
 import ArchitectNow from "../../assets/press/SheCode-Dennis.jpg";
 import NISC from "../../assets/press/SheCode-Dennis.jpg";
 import ObjectComputing from "../../assets/press/SheCode-Dennis.jpg";
-import SIUEGraduateSchool from "../../assets/press/SheCode-Dennis.jpg";
+import SIUEGraduateSchool from "../../assets/SIUEGraduateSchool.webp";
 import Starburst from "../../assets/press/SheCode-Dennis.jpg";
-import T_Rex from "../../assets/press/SheCode-Dennis.jpg";
+import T_Rex from "../../assets/T-Rex.webp";
 
 const tierColor = {
   platinum: "209, 218, 246",
@@ -21,8 +21,8 @@ const Sponsor = (props) => {
     <a href={props.website} rel="external">
       <Image
         objectFit="scale-down"
-        maxW="25vmax"
-        maxH="40vmax"
+        maxW="15vmax"
+        maxH="30vmax"
         src={props.logo}
         alt={props.name}
       />
@@ -71,32 +71,29 @@ const Sponsors = () => {
         <Text fontSize="6xl" fontFamily="monospace">
           Sponsors
         </Text>
-        <Text fontSize="xl" fontFamily="monospace" mb="4vh">
-          TBA
-        </Text>
-        <Text fontSize="4xl" fontFamily="monospace">Want to sponsor eHacks? Check out our <ChakraLink as={ReactRouterLink} to="/be-a-sponsor" textDecoration={"underline"}>Be a Sponsor page</ChakraLink>!</Text>
         {/* <SponsorTier name="Platinum" color={tierColor.platinum}>
           <Sponsor
             name="Object Computing"
             logo={ObjectComputing}
             website="https://google.com"
           />
-        </SponsorTier>
+        </SponsorTier> */}
         <SponsorTier name="Gold" color={tierColor.gold}>
           <Sponsor
-            name="Object Computing"
-            logo={ObjectComputing}
-            website="https://google.com"
+            name="T-Rex"
+            logo={T_Rex}
+            website="https://downtowntrex.org/"
           />
         </SponsorTier>
         <SponsorTier name="Silver" color={tierColor.silver}>
           <Sponsor
-            name="Object Computing"
-            logo={ObjectComputing}
-            website="https://google.com"
+            name="SIUE Graduate School"
+            logo={SIUEGraduateSchool}
+            website="https://www.siue.edu/graduate/"
           />
-        </SponsorTier> */}
+        </SponsorTier>
         <Text fontSize="xl" fontFamily="monospace">Net event proceeds will go to benefit the SIUE Computer Science Development Fund</Text>
+        <Text fontSize="4xl" fontFamily="monospace">Want to sponsor eHacks? Check out our <ChakraLink as={ReactRouterLink} to="/be-a-sponsor" textDecoration={"underline"}>Be a Sponsor page</ChakraLink>!</Text>
       </Box>
     </Box>
   );

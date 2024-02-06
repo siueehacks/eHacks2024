@@ -46,6 +46,11 @@ const Faq = () => {
           width="70vw"
           fontFamily="monospace"
         >
+          <FaqItem question="When and where is eHacks?">
+            The event will take place at the T-Rex Innovation Center in downtown STL.
+            The event will start at 4:30 PM on March 1st and end at noon on March 3rd.
+            More information about specific bus times will be sent out closer to the event.
+          </FaqItem>
           <FaqItem question="What is a hackathon?">
             A hackathon is an event where people come together to create
             something new. It is a place where you can meet new people and
@@ -60,10 +65,10 @@ const Faq = () => {
             participate does not guarantee your application is accepted until we review it. You will receive
             an email if you are accepted.
           </FaqItem>
-          <FaqItem question="What does priority application mean?">
+          {/* <FaqItem question="What does priority application mean?">
             Priority application means you will be guaranteed a free t-shirt and
             potentially other goodies if you are accepted.
-          </FaqItem>
+          </FaqItem> */}
           <FaqItem question="Am I guaranteed to participate if I apply by the deadline?">
             While eHacks is open to anyone who is currently enrolled in a US college,
             we still need to review your application to verify your eligibility, though it
@@ -85,6 +90,10 @@ const Faq = () => {
             Unfortunately, we will not be able to provide any sleeping accommodations. We recommend that if you plan on
             spending the night at the venue, that you bring sleeping bags and pillows.
           </FaqItem>
+          <FaqItem question="Do I need to stay the whole time?">
+            You are allowed to leave the venue at any time.
+            However, there will only transportation provided to and from SIUE at the start and end of the event.
+          </FaqItem>
           <FaqItem question="Will there be showers/hygiene options?">
             There are no showers available at the venue. However, there will be a few bathrooms available for
             use. We recommend that you bring a change of clothes or two and any other hygiene products you need to
@@ -105,7 +114,7 @@ const Faq = () => {
             Attending eHacks will enhance your collaborative problem-solving skills through real-
             world projects. Simultaneously, you will build connections with recruiters and peers from
             various fields, building your network and opportunities for your future.
-        </FaqItem>
+          </FaqItem>
         </Accordion>
       </Box>
     </Box>
