@@ -194,6 +194,7 @@ const RegistrationForm = () => {
                       <Radio value='sophomore'>Sophomore</Radio>
                       <Radio value='junior'>Junior</Radio>
                       <Radio value='senior'>Senior</Radio>
+                      <Radio value='grad'>Grad</Radio>
                     </Stack>
                   </Flex>
                 </RadioGroup>
