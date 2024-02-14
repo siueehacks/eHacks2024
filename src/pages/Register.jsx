@@ -83,7 +83,7 @@ const RegistrationForm = () => {
       shirtSize: shirtSize,
       school: school,
       schoolYear: schoolYear,
-      submissionTime: date.toLocaleString(),
+      submissionTime: date.toLocaleString("en-US"),
       resume: resumeName,
       needsTransport, needsTransport,
       major: major
@@ -199,18 +199,18 @@ const RegistrationForm = () => {
                   </Flex>
                 </RadioGroup>
                 <Flex align="center" textAlign="left" h="25%">
-                <label htmlFor="major">Major: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
-                <Input
-                  type="major"
-                  id="major"
-                  value={major}
-                  onChange={(e) => setMajor(e.target.value)}
-                  className="TextField"
-                  required
-                />
-              </Flex>
+                  <label htmlFor="major">Major: <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
+                  <Input
+                    type="major"
+                    id="major"
+                    value={major}
+                    onChange={(e) => setMajor(e.target.value)}
+                    className="TextField"
+                    required
+                  />
+                </Flex>
                 <br/>
-                <RadioGroup onChange={setNeedsTransport} value={needsTransport} name="shirtSize">
+                <RadioGroup onChange={setNeedsTransport} value={needsTransport} name="needsTransport">
                   <Flex align="center" justifyContent="space-between">
                     <label htmlFor="needsTransport">Riding bus (SIUE students only): <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
                     <Stack direction='row'>
