@@ -2,7 +2,7 @@ import { Text, Button, Box, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/eHacksLogo.png";
-import sponsorLogo from "../../assets/shecodeWhiteGlow.png"
+import OCILogo from "../../assets/sponsors/ObjectComputingLight.webp"
 import { getRegistrationCount } from "../../data/firestoreOps";
 import { CAPACITY, DEADLINE } from "../../config";
 import SocialLinks from "./SocialLinks.jsx";
@@ -68,18 +68,18 @@ const Home = () => {
       mt="75px"
     >
       <Box display="flex" flexDirection="column" alignItems="center">
-        {/* <a href="https://ehacks.cs.siue.edu/" rel="external">
+        <a href="https://objectcomputing.com/" rel="external">
         <Image
-            src={sponsorLogo}
-            alt="Presenting Sponsor"
-            maxW="20vmax"
-            maxH="13vh"
+            src={OCILogo}
+            alt="Object Computing"
+            width="38vw"
+            maxW="373px"
             mt="0"
           />
         </a>
         <Text mt="0px" mb="3vh" fontSize="xl" fontFamily="monospace" as="i">
           presents
-        </Text> */}
+        </Text>
         <Image 
           src={logo}
           alt="eHacks Logo"

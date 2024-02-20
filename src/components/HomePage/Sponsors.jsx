@@ -1,19 +1,16 @@
 import { Text, Box, Image, Flex} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
-import Nineteen04Labs from "../../assets/press/SheCode-Dennis.jpg";
-import ArchitectNow from "../../assets/press/SheCode-Dennis.jpg";
-import NISC from "../../assets/press/SheCode-Dennis.jpg";
-import ObjectComputing from "../../assets/press/SheCode-Dennis.jpg";
-import SIUEGraduateSchool from "../../assets/SIUEGraduateSchool.webp";
-import Starburst from "../../assets/press/SheCode-Dennis.jpg";
-import T_Rex from "../../assets/T-Rex.webp";
+import SIUEGraduateSchool from "../../assets/sponsors/SIUEGraduateSchool.webp";
+import T_Rex from "../../assets/sponsors/T-Rex.webp";
+import OCI from "../../assets/sponsors/ObjectComputingSponsor.webp";
+import BJsPrintables from "../../assets/sponsors/BJsPrintables.webp";
 
 const tierColor = {
   platinum: "209, 218, 246",
   gold: "218, 165, 32",
   silver: "211, 211, 211",
-
+  other: "255, 255, 255",
 };
 
 const Sponsor = (props) => {
@@ -21,8 +18,8 @@ const Sponsor = (props) => {
     <a href={props.website} rel="external">
       <Image
         objectFit="scale-down"
-        maxW="15vmax"
-        maxH="30vmax"
+        maxW="30vmax"
+        maxH="15vmax"
         src={props.logo}
         alt={props.name}
       />
@@ -71,13 +68,13 @@ const Sponsors = () => {
         <Text fontSize="6xl" fontFamily="monospace">
           Sponsors
         </Text>
-        {/* <SponsorTier name="Platinum" color={tierColor.platinum}>
+        <SponsorTier name="Platinum" color={tierColor.platinum}>
           <Sponsor
             name="Object Computing"
-            logo={ObjectComputing}
-            website="https://google.com"
+            logo={OCI}
+            website="https://objectcomputing.com/"
           />
-        </SponsorTier> */}
+        </SponsorTier>
         <SponsorTier name="Gold" color={tierColor.gold}>
           <Sponsor
             name="T-Rex"
@@ -90,6 +87,13 @@ const Sponsors = () => {
             name="SIUE Graduate School"
             logo={SIUEGraduateSchool}
             website="https://www.siue.edu/graduate/"
+          />
+        </SponsorTier>
+        <SponsorTier name = "Other" color={tierColor.other}>
+          <Sponsor
+            name="BJ's Printables"
+            logo={BJsPrintables}
+            website="https://www.bjsprintables.com/"
           />
         </SponsorTier>
         <Text fontSize="xl" fontFamily="monospace">Net event proceeds will go to benefit the SIUE Computer Science Development Fund</Text>

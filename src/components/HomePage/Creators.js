@@ -1,7 +1,7 @@
-import ScottImage from "../../assets/press/Scott.jpg";
-import LogLugImage from "../../assets/press/LogLug.jpg";
-import JaredImage from "../../assets/press/Jared.jpg";
-import MattImage from "../../assets/press/Matt.jpg";
+import ScottImage from "../../assets/headshots/Scott.jpg";
+import LogLugImage from "../../assets/headshots/LogLug.jpg";
+import JaredImage from "../../assets/headshots/Jared.jpg";
+import MattImage from "../../assets/headshots/Matt.jpg";
 
 export const creators = [
     {
