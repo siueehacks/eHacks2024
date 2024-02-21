@@ -24,6 +24,7 @@ const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [sortBy, setSortBy] = useState("submissionTime");
 
   const properties = {
     submissionTime: "Submission Date",
@@ -134,7 +135,7 @@ const Dashboard = () => {
   };
 
   function displayProperties(doc) {
-    console.log(doc);
+    // console.log(doc);
     return Object.keys(properties).map((key) => <Td>{doc[key]}</Td>);
   }
 
@@ -171,6 +172,21 @@ const Dashboard = () => {
     );
   };
 
+  function compareDocProps(docA, docB) {
+    switch(sortBy) {
+      default:
+        const dateA = new Date(docA.data().submissionTime);
+        const dateB = new Date(docB.data().submissionTime);
+        if ( dateA < dateB ){
+          return -1;
+        }
+        if ( dateA > dateB ){
+          return 1;
+        }
+        return 0;
+    }
+  }
+
   function showRegistrations() {
     if (!tableData) {
       return <p>Loading...</p>;
@@ -178,6 +194,7 @@ const Dashboard = () => {
     if (tableData.length === 0) {
       return <p>No registrations yet!</p>;
     }
+    tableData.sort(compareDocProps);
     return tableData.map((doc) => <DataRow doc={doc} />);
   }
 
