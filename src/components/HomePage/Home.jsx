@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/eHacksLogo.png";
 import OCILogo from "../../assets/sponsors/ObjectComputingLight.webp"
 import { getRegistrationCount } from "../../data/firestoreOps";
-import { CAPACITY, DEADLINE } from "../../config";
+import { CAPACITY, DEADLINE, SOFTDEADLINE } from "../../config";
 import SocialLinks from "./SocialLinks.jsx";
 
 const Home = () => {
@@ -105,6 +105,9 @@ const Home = () => {
         fontSize="xl"
         fontFamily="monospace"
       >
+        <Text as={DEADLINE > new Date() ? "" : "s"}>
+          Soft Deadline for Shirts: {SOFTDEADLINE.toLocaleString()}
+        </Text>
         <Text as={DEADLINE > new Date() ? "" : "s"}>
           Registration Deadline: {DEADLINE.toLocaleString()}
         </Text>

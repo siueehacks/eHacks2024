@@ -65,10 +65,10 @@ const Faq = () => {
             participate does not guarantee your application is accepted until we review it. You will receive
             an email if you are accepted.
           </FaqItem>
-          {/* <FaqItem question="What does priority application mean?">
-            Priority application means you will be guaranteed a free t-shirt and
-            potentially other goodies if you are accepted.
-          </FaqItem> */}
+          <FaqItem question="What does Soft Deadline for Shirts mean?">
+            Soft Deadline for Shirts means you will be guaranteed a free t-shirt and
+            potentially other goodies if you register before the listed deadline.
+          </FaqItem>
           <FaqItem question="Am I guaranteed to participate if I apply by the deadline?">
             While eHacks is open to anyone who is currently enrolled in a US college,
             we still need to review your application to verify your eligibility, though it
@@ -84,7 +84,8 @@ const Faq = () => {
           </FaqItem>
           <FaqItem question="What should I bring?">
             You should bring a laptop/something to code on, any chargers you might need, and anything you would bring
-            on a two day trip (clothes, toiletries, etc.). We also recommend that you bring stuff to sleep on.
+            on a two day trip (clothes, toiletries, etc.). Refillable waterbottles are encouraged as there will be access
+            to water fountains at the venue. We also HIGHLY recommend that you bring stuff to sleep on (pillow, blankets, sleeping bag, etc.).
           </FaqItem>
           <FaqItem question="Will sleeping accommodations be provided?">
             Unfortunately, we will not be able to provide any sleeping accommodations. We recommend that if you plan on
