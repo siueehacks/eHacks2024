@@ -66,7 +66,7 @@ const Schedule = () => {
           Schedule
         </Text>
         <Text fontSize="xl" fontFamily="monospace" mb="4vh">
-          All times are in CST
+          All times are in CST. Tournaments and Meals are Subject to Change.
         </Text>
         <Flex
           display="flex"
@@ -92,9 +92,10 @@ const Schedule = () => {
             <ScheduleItem time="10:00 AM" event="AMA: What is Real Dev Life?" />
             <ScheduleItem time="12:00 PM" event="Lunch" />
             <ScheduleItem time="2:30 PM" event="Tech Talk: Cloud Computing" />
+            <ScheduleItem time="3:30 PM" event="Tournament: Nintendo Switch Game TBA" />
             <ScheduleItem time="6:00 PM" event="Dinner" />
             <ScheduleItem time="10:00 PM" event="Snack" />
-            <ScheduleItem time="11:00 PM" event="Ping-Pong Tournament" />
+            <ScheduleItem time="11:00 PM" event="Tournament: Ping Pong" />
           </Day>
           <Day is="Sunday">
             <ScheduleItem time="8:00 AM" event="Breakfast" />
