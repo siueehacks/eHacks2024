@@ -2,6 +2,7 @@ import ScottImage from "../../assets/headshots/Scott.jpg";
 import LogLugImage from "../../assets/headshots/LogLug.jpg";
 import JaredImage from "../../assets/headshots/Jared.jpg";
 import MattImage from "../../assets/headshots/Matt.jpg";
+import JoeImage from "../../assets/headshots/Joe.jpg";
 
 export const creators = [
     {
@@ -34,6 +35,14 @@ export const creators = [
         role: 'Webmaster',
         linkedin: 'https://www.linkedin.com/in/camden-mckay-a3140b251/',
         image: LogLugImage
+    },
+
+    {
+        id: 5,
+        name: 'Joseph Haenel',
+        role: 'Event Coordinator',
+        linkedin: 'https://www.linkedin.com/in/joseph-haenel/',
+        image: JoeImage
     }
 
 
