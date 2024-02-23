@@ -40,7 +40,7 @@ const SponsorTier = (props) => {
       direction="column"
     >
       <Text fontSize={{base: "2xl", md: "4xl"}} fontFamily="monospace" color="black" opacity="100%">
-        {props.name} Sponsors
+        {props.name} Sponsor{(props.name !== "Platinum") ? "s" : ""}
       </Text>
       <Flex
         direction="row"
