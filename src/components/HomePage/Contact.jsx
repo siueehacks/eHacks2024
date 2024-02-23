@@ -85,7 +85,6 @@ const Contact = () => {
         </Text>
         <Box>
           <ul style={{ fontFamily: "monospace", fontSize: "1.4rem" }}>
-            <li>Joseph Haenel</li>
             <li>Zakery Hickey</li>
             <li>Simran Patel</li>
             <li>Edward Prenzler</li>
