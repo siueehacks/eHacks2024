@@ -107,6 +107,9 @@ const Faq = () => {
             You can form a team using the #form-team channel in our Discord server.
             We can also help put you on a team the day of the event.
           </FaqItem>
+          <FaqItem question="Where do I declare my team?">
+            When you check-in at the venue, we will ask what your team name is and who is on your team.
+          </FaqItem>
           <FaqItem question="How big can my team be?">
             We do not put a restriction on team size, but we give out prizes in sets of four.
             If you want, you can also work by yourself.
