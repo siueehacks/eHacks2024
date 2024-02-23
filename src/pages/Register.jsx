@@ -20,7 +20,7 @@ const RegistrationForm = () => {
   const [school, setSchool] = useState("");
   const [schoolYear, setSchoolYear] = useState("");
   const [major, setMajor] = useState("");
-  const [needsTransport, setNeedsTransport] = useState("");
+  const [needsTransport, setNeedsTransport] = useState("no");
   const [message, setMessage] = useState("");
   const [atCapacity, setAtCapacity] = useState(false);
   const navigate = useNavigate();
@@ -213,10 +213,11 @@ const RegistrationForm = () => {
                 <RadioGroup onChange={setNeedsTransport} value={needsTransport} name="needsTransport">
                   <Flex align="center" justifyContent="space-between">
                     <label htmlFor="needsTransport">Riding bus (SIUE students only): <Text color="red" display="inline">{(message !== "") ? "Required!" : ""}</Text></label>
-                    <Stack direction='row'>
+                    {/* <Stack direction='row'>
                       <Radio value='yes'>Yes</Radio>
                       <Radio value='no'>No</Radio>
-                    </Stack>
+                    </Stack> */}
+                    <Text pl="5px" textColor="red" fontWeight="bold">Bus capacity has been met! If you are unable to find transport reach out to siue.ehacks@gmail.com and we will find accommodations.</Text>
                   </Flex>
                 </RadioGroup>
                 <br/>
