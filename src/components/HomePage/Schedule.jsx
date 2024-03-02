@@ -82,8 +82,8 @@ const Schedule = () => {
             <ScheduleItem time="6:00 PM" event="Dinner" />
             <ScheduleItem time="7:00 PM" event="Opening Ceremony" />
             <ScheduleItem time="7:30 PM" event="Hack Begins" />
-            <ScheduleItem time="8:00 PM" event="Tech Talk: Git/Version Control" />
-            <ScheduleItem time="8:45 PM" event="Tech Talk: Writing Readable Software" />
+            <ScheduleItem time="8:30 PM" event="Tech Talk: Git/Version Control" />
+            <ScheduleItem time="9:15 PM" event="Tech Talk: Writing Readable Software" />
             <ScheduleItem time="10:00 PM" event="Snack" />
           </Day>
           <Day is="Saturday">
